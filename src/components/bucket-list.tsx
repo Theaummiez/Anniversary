@@ -10,7 +10,7 @@ import { BUCKET_LIST } from "@/lib/constants";
 import { Check } from "lucide-react";
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 16 },
+  hidden: { opacity: 0, y: 12 },
   visible: { opacity: 1, y: 0 },
 };
 
@@ -37,7 +37,7 @@ export function BucketList() {
   return (
     <section
       id="bucket"
-      className="relative z-[1] min-h-svh flex flex-col items-center justify-center px-4 py-24"
+      className="relative z-[1] min-h-svh flex flex-col items-center justify-center px-6 py-24"
       style={{
         background: "linear-gradient(180deg, #130230 0%, #080114 100%)",
       }}
@@ -50,11 +50,11 @@ export function BucketList() {
       />
 
       <motion.div
-        className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-3xl w-full"
+        className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 max-w-2xl w-full"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
-        transition={{ staggerChildren: 0.05 }}
+        transition={{ staggerChildren: 0.04 }}
       >
         {BUCKET_LIST.map((item, i) => {
           const done = !!checked[i];
@@ -72,28 +72,30 @@ export function BucketList() {
                     toggle(i);
                   }
                 }}
-                className={`flex items-center gap-3 px-4 py-3 cursor-pointer transition-all duration-300 hover:-translate-y-0.5 hover:border-pink-400 hover:shadow-[0_8px_24px_rgba(255,107,157,0.14)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500/50 ${
+                className={`flex items-center gap-3 px-4 py-3.5 cursor-pointer transition-all duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 ${
                   done
-                    ? "border-amber-400 bg-amber-400/[0.07]"
-                    : "bg-white/5 border-pink-500/15 backdrop-blur-xl"
+                    ? "border-amber-400/30 bg-amber-400/[0.05]"
+                    : "bg-white/[0.02] border-white/[0.06] hover:border-white/[0.12]"
                 }`}
               >
                 <div
-                  className={`w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 transition-all duration-300 ${
+                  className={`w-5 h-5 rounded-full border-[1.5px] flex items-center justify-center shrink-0 transition-all duration-200 ${
                     done
                       ? "bg-amber-400 border-amber-400 text-gray-900"
-                      : "border-pink-500/25"
+                      : "border-white/20"
                   }`}
                   aria-hidden="true"
                 >
-                  {done && <Check size={12} strokeWidth={3} />}
+                  {done && <Check size={10} strokeWidth={3} />}
                 </div>
-                <span className="text-lg shrink-0" aria-hidden="true">
+                <span className="text-base shrink-0" aria-hidden="true">
                   {item.emoji}
                 </span>
                 <span
                   className={`text-sm transition-all truncate ${
-                    done ? "line-through text-pink-200/50" : "text-white/90"
+                    done
+                      ? "line-through text-white/30"
+                      : "text-white/70"
                   }`}
                 >
                   {item.label}
@@ -105,19 +107,19 @@ export function BucketList() {
       </motion.div>
 
       <motion.p
-        className="mt-8 text-pink-200/60 text-sm"
+        className="mt-10 text-white/30 text-sm"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
       >
-        <span className="font-heading text-lg text-amber-400">
+        <span className="font-heading text-lg text-amber-400/80 tabular-nums">
           {doneCount}
-        </span>{" "}
-        rêves accomplis sur{" "}
-        <span className="font-heading text-lg text-amber-400">
+        </span>
+        <span className="text-white/20"> / </span>
+        <span className="font-heading text-lg text-amber-400/80 tabular-nums">
           {BUCKET_LIST.length}
         </span>{" "}
-        🌟
+        rêves accomplis 🌟
       </motion.p>
     </section>
   );

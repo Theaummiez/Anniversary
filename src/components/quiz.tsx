@@ -63,7 +63,7 @@ export function Quiz() {
   return (
     <section
       id="quiz"
-      className="relative z-[1] min-h-svh flex flex-col items-center justify-center px-4 py-24"
+      className="relative z-[1] min-h-svh flex flex-col items-center justify-center px-6 py-24"
       style={{
         background: "linear-gradient(180deg, #130230 0%, #080114 100%)",
       }}
@@ -75,10 +75,10 @@ export function Quiz() {
         description="Un petit quiz pour tester ta connaissance de notre histoire 💕"
       />
 
-      <Card className="bg-white/5 border-pink-500/15 backdrop-blur-xl max-w-xl w-full p-6 md:p-8">
-        {/* Progress dots */}
+      <Card className="bg-white/[0.03] border-white/[0.06] backdrop-blur-xl max-w-lg w-full p-6 md:p-8">
+        {/* Progress — thicker, more visible */}
         <div
-          className="flex gap-1.5 mb-6"
+          className="flex gap-1.5 mb-8"
           role="progressbar"
           aria-valuenow={currentIndex}
           aria-valuemin={0}
@@ -88,10 +88,10 @@ export function Quiz() {
           {QUIZ_QUESTIONS.map((_, i) => (
             <div
               key={i}
-              className={`flex-1 h-1 rounded-full transition-colors duration-300 ${
+              className={`flex-1 h-1.5 rounded-full transition-all duration-400 ${
                 i < currentIndex
                   ? "bg-gradient-to-r from-pink-400 to-purple-500"
-                  : "bg-white/10"
+                  : "bg-white/[0.06]"
               }`}
             />
           ))}
@@ -108,27 +108,29 @@ export function Quiz() {
           ) : (
             <motion.div
               key={state.index}
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 16 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.3 }}
+              exit={{ opacity: 0, x: -16 }}
+              transition={{ duration: 0.25 }}
             >
-              <h3 className="font-heading text-lg md:text-xl font-bold leading-snug mb-5">
+              <h3 className="font-heading text-xl md:text-2xl font-bold leading-snug mb-6">
                 {currentQ?.question}
               </h3>
 
               <div className="grid gap-2.5" role="group" aria-label="Options">
                 {currentQ?.options.map((opt, i) => {
                   let variant =
-                    "bg-white/[0.04] border-white/10 hover:border-pink-400 hover:bg-pink-500/10 hover:translate-x-1.5";
+                    "bg-white/[0.03] border-white/[0.08] hover:border-pink-400/40 hover:bg-pink-500/[0.06]";
 
                   if (state.phase === "answered") {
                     if (i === currentQ.answerIndex) {
-                      variant = "border-green-500 bg-green-500/15";
+                      variant =
+                        "border-emerald-400/50 bg-emerald-500/10 text-emerald-200";
                     } else if (i === state.picked) {
-                      variant = "border-red-500 bg-red-500/15";
+                      variant = "border-red-400/50 bg-red-500/10 text-red-200";
                     } else {
-                      variant = "bg-white/[0.04] border-white/10 opacity-50";
+                      variant =
+                        "bg-white/[0.02] border-white/[0.04] opacity-40";
                     }
                   }
 
@@ -137,7 +139,7 @@ export function Quiz() {
                       key={i}
                       onClick={() => pick(i)}
                       disabled={state.phase === "answered"}
-                      className={`text-left border rounded-xl px-4 py-3 text-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500/50 ${variant} disabled:cursor-default`}
+                      className={`text-left border rounded-xl px-4 py-3.5 text-sm leading-snug transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 ${variant} disabled:cursor-default`}
                     >
                       <span className="line-clamp-2">{opt}</span>
                     </button>
@@ -146,7 +148,7 @@ export function Quiz() {
               </div>
 
               <p
-                className="mt-4 text-sm min-h-[1.5rem] text-pink-200/60 line-clamp-2"
+                className="mt-5 text-sm min-h-[1.5rem] text-white/50 line-clamp-2"
                 aria-live="polite"
               >
                 {state.phase === "answered" && currentQ
@@ -192,23 +194,23 @@ function ScoreScreen({
 
   return (
     <motion.div
-      className="text-center py-4"
-      initial={{ opacity: 0, scale: 0.9 }}
+      className="text-center py-6"
+      initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
     >
-      <span className="text-5xl block mb-3" aria-hidden="true">
+      <span className="text-5xl block mb-4" aria-hidden="true">
         {emoji}
       </span>
       <span
-        className="block font-heading text-6xl font-bold bg-gradient-to-r from-amber-400 to-pink-400 bg-clip-text text-transparent"
+        className="block font-heading text-6xl font-bold bg-gradient-to-r from-amber-300 to-pink-400 bg-clip-text text-transparent"
         aria-label={`Score : ${score} sur ${total}`}
       >
         {score}/{total}
       </span>
-      <p className="text-muted-foreground mt-3 text-sm">{message}</p>
+      <p className="text-white/40 mt-4 text-sm leading-relaxed">{message}</p>
       <Button
         onClick={onRestart}
-        className="mt-5 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-400 hover:to-purple-500 focus-visible:ring-pink-500/50"
+        className="mt-6 bg-white/10 hover:bg-white/15 text-white border-0 focus-visible:ring-pink-500"
       >
         <RotateCcw size={14} className="mr-1.5" />
         Rejouer

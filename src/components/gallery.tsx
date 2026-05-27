@@ -9,9 +9,9 @@ import { GALLERY_PHOTOS, GALLERY_CATEGORIES } from "@/lib/constants";
 import type { GalleryCategory } from "@/types";
 
 const itemVariants = {
-  hidden: { opacity: 0, scale: 0.85, y: 20 },
-  visible: { opacity: 1, scale: 1, y: 0 },
-  exit: { opacity: 0, scale: 0.85, y: -10 },
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0 },
+  exit: { opacity: 0, scale: 0.95 },
 };
 
 export function Gallery() {
@@ -51,7 +51,7 @@ export function Gallery() {
   return (
     <section
       id="gallery"
-      className="relative z-[1] min-h-svh flex flex-col items-center justify-center px-4 py-24"
+      className="relative z-[1] min-h-svh flex flex-col items-center justify-center px-6 py-24"
       style={{
         background: "linear-gradient(180deg, #080114 0%, #130230 100%)",
       }}
@@ -63,36 +63,42 @@ export function Gallery() {
         description="Chaque photo raconte une partie de notre histoire 🌟"
       />
 
-      {/* Filter tabs — horizontally scrollable on mobile */}
-      <div className="w-full max-w-2xl mb-8 overflow-x-auto scrollbar-none">
+      {/* Filter tabs */}
+      <div className="w-full max-w-3xl mb-10 overflow-x-auto scrollbar-none">
         <motion.div
-          className="flex justify-center gap-2 min-w-max px-2"
-          initial={{ opacity: 0, y: 12 }}
+          className="flex justify-center gap-1.5 min-w-max px-2"
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           role="tablist"
           aria-label="Filtrer les photos par catégorie"
         >
-          {GALLERY_CATEGORIES.map(({ key, label, emoji }) => (
-            <button
-              key={key}
-              onClick={() => setFilter(key as "all" | GalleryCategory)}
-              role="tab"
-              aria-selected={filter === key}
-              className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 ${
-                filter === key
-                  ? "bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-[0_4px_16px_rgba(255,107,157,0.4)]"
-                  : "bg-white/5 border border-white/10 text-white/60 hover:text-white hover:border-pink-500/30"
-              }`}
-            >
-              <span aria-hidden="true">{emoji}</span> {label}
-            </button>
-          ))}
+          {GALLERY_CATEGORIES.map(({ key, label, emoji }) => {
+            const active = filter === key;
+            return (
+              <button
+                key={key}
+                onClick={() => setFilter(key as "all" | GalleryCategory)}
+                role="tab"
+                aria-selected={active}
+                className={`px-3.5 py-2 rounded-lg text-xs font-medium transition-all duration-200 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 ${
+                  active
+                    ? "bg-white/10 text-white shadow-sm"
+                    : "text-white/40 hover:text-white/70 hover:bg-white/[0.04]"
+                }`}
+              >
+                <span aria-hidden="true" className="mr-1">
+                  {emoji}
+                </span>
+                {label}
+              </button>
+            );
+          })}
         </motion.div>
       </div>
 
-      {/* Photo grid — masonry columns */}
-      <div className="columns-2 md:columns-3 lg:columns-4 gap-3 max-w-6xl w-full">
+      {/* Masonry grid */}
+      <div className="columns-2 md:columns-3 lg:columns-4 gap-3 md:gap-4 max-w-6xl w-full">
         <AnimatePresence mode="popLayout">
           {filtered.map((photo, i) => (
             <motion.div
@@ -101,25 +107,24 @@ export function Gallery() {
               initial="hidden"
               animate="visible"
               exit="exit"
-              transition={{ duration: 0.4, delay: i * 0.03 }}
+              transition={{ duration: 0.35, delay: i * 0.02 }}
               layout
-              className="break-inside-avoid mb-3"
+              className="break-inside-avoid mb-3 md:mb-4"
             >
               <button
                 onClick={() => openLightbox(i)}
-                className="group relative w-full block rounded-xl overflow-hidden cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#080114]"
+                className="group relative w-full block rounded-2xl overflow-hidden cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#080114]"
                 aria-label={`Voir : ${photo.alt}`}
               >
-                {/* Skeleton placeholder — reserves space to prevent CLS */}
                 <div
-                  className={`w-full ${
+                  className={`relative w-full ${
                     photo.aspect === "landscape"
                       ? "aspect-[4/3]"
                       : "aspect-[3/4]"
                   }`}
                 >
                   {!loadedImages.has(photo.src) && (
-                    <div className="absolute inset-0 bg-white/5 animate-pulse rounded-xl" />
+                    <div className="absolute inset-0 bg-white/[0.03] animate-pulse rounded-2xl" />
                   )}
 
                   <Image
@@ -127,22 +132,21 @@ export function Gallery() {
                     alt={photo.alt}
                     fill
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                    className="object-cover rounded-xl transition-all duration-500 group-hover:scale-105 group-hover:brightness-110"
+                    className="object-cover rounded-2xl transition-all duration-500 group-hover:scale-[1.03]"
                     onLoad={() => handleImageLoad(photo.src)}
                     loading="lazy"
                   />
                 </div>
 
                 {/* Hover overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-end p-3">
-                  <p className="text-white text-xs font-medium line-clamp-2">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl flex items-end p-4">
+                  <p className="text-white/90 text-xs font-medium line-clamp-2">
                     {photo.alt}
                   </p>
                 </div>
 
-                {/* Featured badge */}
                 {photo.featured && (
-                  <span className="absolute top-2 right-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white text-[0.6rem] font-bold px-2 py-0.5 rounded-full">
+                  <span className="absolute top-2.5 right-2.5 bg-black/50 backdrop-blur-sm text-white text-[0.6rem] font-medium px-2 py-0.5 rounded-full">
                     ⭐ Coup de cœur
                   </span>
                 )}
@@ -152,7 +156,6 @@ export function Gallery() {
         </AnimatePresence>
       </div>
 
-      {/* Empty state */}
       {filtered.length === 0 && (
         <p className="text-pink-200/40 text-sm italic mt-8">
           Aucune photo dans cette catégorie 📸
@@ -160,16 +163,14 @@ export function Gallery() {
       )}
 
       <motion.p
-        className="mt-8 text-pink-200/40 text-xs italic text-center"
+        className="mt-10 text-white/25 text-xs italic text-center"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
       >
-        {filtered.length} souvenirs · Clique sur une photo pour l&apos;agrandir
-        ✨
+        {filtered.length} souvenirs · Clique pour agrandir
       </motion.p>
 
-      {/* Lightbox */}
       <PhotoLightbox
         src={currentPhoto?.src ?? null}
         alt={currentPhoto?.alt ?? ""}

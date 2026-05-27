@@ -10,7 +10,7 @@ interface SectionHeaderProps {
 }
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0 },
 };
 
@@ -22,22 +22,22 @@ export function SectionHeader({
 }: SectionHeaderProps) {
   return (
     <motion.div
-      className="flex flex-col items-center text-center mb-10 md:mb-14"
+      className="flex flex-col items-center text-center mb-12 md:mb-16"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
-      transition={{ staggerChildren: 0.12 }}
+      transition={{ staggerChildren: 0.1 }}
     >
       <motion.p
         variants={fadeUp}
-        className="text-sm text-muted-foreground tracking-wider mb-2"
+        className="text-xs sm:text-sm text-pink-300/60 tracking-[0.15em] uppercase mb-3"
       >
         {tag}
       </motion.p>
 
       <motion.h2
         variants={fadeUp}
-        className="font-heading text-3xl md:text-5xl font-bold tracking-tight"
+        className="font-heading text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight leading-tight"
       >
         {title}{" "}
         <span className="bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text text-transparent">
@@ -47,7 +47,7 @@ export function SectionHeader({
 
       <motion.p
         variants={fadeUp}
-        className="text-muted-foreground text-sm md:text-base mt-3 max-w-md"
+        className="text-pink-200/50 text-sm md:text-base mt-4 max-w-md leading-relaxed"
       >
         {description}
       </motion.p>
