@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Card } from "@/components/ui/card";
@@ -12,10 +13,16 @@ const itemVariants = {
 };
 
 export function Timeline() {
+  const [loaded, setLoaded] = useState<Set<number>>(new Set());
+
+  const markLoaded = useCallback((i: number) => {
+    setLoaded((prev) => new Set(prev).add(i));
+  }, []);
+
   return (
     <section
       id="timeline"
-      className="relative z-[1] min-h-svh flex flex-col items-center justify-center px-4 py-20"
+      className="relative z-[1] min-h-svh flex flex-col items-center justify-center px-4 py-24"
       style={{
         background: "linear-gradient(180deg, #130230 0%, #080114 100%)",
       }}
@@ -49,20 +56,25 @@ export function Timeline() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.65, delay: i * 0.1 }}
-              className={`flex items-center gap-4 mb-10 md:mb-12 ${
+              className={`flex items-center gap-4 mb-10 ${
                 isEven ? "md:flex-row-reverse" : ""
               } flex-col md:flex-row`}
             >
               <Card className="flex-1 bg-white/5 border-pink-500/15 backdrop-blur-xl overflow-hidden hover:border-pink-400 hover:shadow-[0_0_32px_rgba(255,107,157,0.14)] transition-all duration-300 group">
-                {/* Photo */}
+                {/* Photo with skeleton */}
                 {event.photo && (
-                  <div className="relative w-full aspect-[16/10] overflow-hidden">
+                  <div className="relative w-full aspect-[16/10] overflow-hidden bg-white/5">
+                    {!loaded.has(i) && (
+                      <div className="absolute inset-0 animate-pulse bg-white/5" />
+                    )}
                     <Image
                       src={event.photo}
                       alt={event.title}
                       fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
                       loading="lazy"
+                      onLoad={() => markLoaded(i)}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                     <span className="absolute bottom-2 left-3 text-3xl drop-shadow-lg">

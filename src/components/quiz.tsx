@@ -63,7 +63,7 @@ export function Quiz() {
   return (
     <section
       id="quiz"
-      className="relative z-[1] min-h-svh flex flex-col items-center justify-center px-4 py-20"
+      className="relative z-[1] min-h-svh flex flex-col items-center justify-center px-4 py-24"
       style={{
         background: "linear-gradient(180deg, #130230 0%, #080114 100%)",
       }}
@@ -76,16 +76,19 @@ export function Quiz() {
       />
 
       <Card className="bg-white/5 border-pink-500/15 backdrop-blur-xl max-w-xl w-full p-6 md:p-8">
+        {/* Progress dots */}
         <div
           className="flex gap-1.5 mb-6"
           role="progressbar"
           aria-valuenow={currentIndex}
+          aria-valuemin={0}
           aria-valuemax={QUIZ_QUESTIONS.length}
+          aria-label={`Question ${currentIndex} sur ${QUIZ_QUESTIONS.length}`}
         >
           {QUIZ_QUESTIONS.map((_, i) => (
             <div
               key={i}
-              className={`flex-1 h-1 rounded-full transition-colors duration-400 ${
+              className={`flex-1 h-1 rounded-full transition-colors duration-300 ${
                 i < currentIndex
                   ? "bg-gradient-to-r from-pink-400 to-purple-500"
                   : "bg-white/10"
@@ -114,7 +117,7 @@ export function Quiz() {
                 {currentQ?.question}
               </h3>
 
-              <div className="grid gap-2.5">
+              <div className="grid gap-2.5" role="group" aria-label="Options">
                 {currentQ?.options.map((opt, i) => {
                   let variant =
                     "bg-white/[0.04] border-white/10 hover:border-pink-400 hover:bg-pink-500/10 hover:translate-x-1.5";
@@ -134,16 +137,16 @@ export function Quiz() {
                       key={i}
                       onClick={() => pick(i)}
                       disabled={state.phase === "answered"}
-                      className={`text-left border rounded-xl px-4 py-3 text-sm transition-all duration-200 ${variant} disabled:cursor-default`}
+                      className={`text-left border rounded-xl px-4 py-3 text-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500/50 ${variant} disabled:cursor-default`}
                     >
-                      {opt}
+                      <span className="line-clamp-2">{opt}</span>
                     </button>
                   );
                 })}
               </div>
 
               <p
-                className="mt-4 text-sm min-h-[1.5rem] text-pink-200/60"
+                className="mt-4 text-sm min-h-[1.5rem] text-pink-200/60 line-clamp-2"
                 aria-live="polite"
               >
                 {state.phase === "answered" && currentQ
@@ -196,13 +199,16 @@ function ScoreScreen({
       <span className="text-5xl block mb-3" aria-hidden="true">
         {emoji}
       </span>
-      <span className="block font-heading text-6xl font-bold bg-gradient-to-r from-amber-400 to-pink-400 bg-clip-text text-transparent">
+      <span
+        className="block font-heading text-6xl font-bold bg-gradient-to-r from-amber-400 to-pink-400 bg-clip-text text-transparent"
+        aria-label={`Score : ${score} sur ${total}`}
+      >
         {score}/{total}
       </span>
       <p className="text-muted-foreground mt-3 text-sm">{message}</p>
       <Button
         onClick={onRestart}
-        className="mt-5 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-400 hover:to-purple-500"
+        className="mt-5 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-400 hover:to-purple-500 focus-visible:ring-pink-500/50"
       >
         <RotateCcw size={14} className="mr-1.5" />
         Rejouer

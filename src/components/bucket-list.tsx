@@ -37,7 +37,7 @@ export function BucketList() {
   return (
     <section
       id="bucket"
-      className="relative z-[1] min-h-svh flex flex-col items-center justify-center px-4 py-20"
+      className="relative z-[1] min-h-svh flex flex-col items-center justify-center px-4 py-24"
       style={{
         background: "linear-gradient(180deg, #130230 0%, #080114 100%)",
       }}
@@ -64,6 +64,7 @@ export function BucketList() {
                 onClick={() => toggle(i)}
                 role="checkbox"
                 aria-checked={done}
+                aria-label={`${item.label} — ${done ? "fait" : "à faire"}`}
                 tabIndex={0}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
@@ -71,7 +72,7 @@ export function BucketList() {
                     toggle(i);
                   }
                 }}
-                className={`flex items-center gap-3 px-4 py-3 cursor-pointer transition-all duration-300 hover:-translate-y-0.5 hover:border-pink-400 hover:shadow-[0_8px_24px_rgba(255,107,157,0.14)] ${
+                className={`flex items-center gap-3 px-4 py-3 cursor-pointer transition-all duration-300 hover:-translate-y-0.5 hover:border-pink-400 hover:shadow-[0_8px_24px_rgba(255,107,157,0.14)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500/50 ${
                   done
                     ? "border-amber-400 bg-amber-400/[0.07]"
                     : "bg-white/5 border-pink-500/15 backdrop-blur-xl"
@@ -83,14 +84,15 @@ export function BucketList() {
                       ? "bg-amber-400 border-amber-400 text-gray-900"
                       : "border-pink-500/25"
                   }`}
+                  aria-hidden="true"
                 >
                   {done && <Check size={12} strokeWidth={3} />}
                 </div>
-                <span className="text-lg" aria-hidden="true">
+                <span className="text-lg shrink-0" aria-hidden="true">
                   {item.emoji}
                 </span>
                 <span
-                  className={`text-sm transition-all ${
+                  className={`text-sm transition-all truncate ${
                     done ? "line-through text-pink-200/50" : "text-white/90"
                   }`}
                 >
@@ -103,7 +105,7 @@ export function BucketList() {
       </motion.div>
 
       <motion.p
-        className="mt-6 text-pink-200/60 text-sm"
+        className="mt-8 text-pink-200/60 text-sm"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}

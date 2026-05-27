@@ -23,7 +23,7 @@ export function Countdown() {
   return (
     <section
       id="countdown"
-      className="relative z-[1] min-h-svh flex flex-col items-center justify-center text-center px-4 py-20"
+      className="relative z-[1] min-h-svh flex flex-col items-center justify-center text-center px-4 py-24"
       style={{
         background:
           "radial-gradient(ellipse 80% 60% at 50% 40%, #270760 0%, #080114 75%)",
@@ -46,11 +46,13 @@ export function Countdown() {
       />
 
       <motion.div
-        className="flex flex-wrap justify-center gap-3 md:gap-4"
+        className="grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-3 md:gap-4"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
         transition={{ staggerChildren: 0.1 }}
+        role="group"
+        aria-label="Compte à rebours vers l'anniversaire"
       >
         {UNITS.map(({ key, label }) => {
           const value = cd[key];
@@ -61,7 +63,7 @@ export function Countdown() {
             <motion.div key={key} variants={cardVariants}>
               <Card className="bg-white/5 border-pink-500/15 backdrop-blur-xl min-w-[100px] md:min-w-[120px] px-5 py-5 text-center">
                 <span
-                  className="block font-heading text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-400 to-pink-300 bg-clip-text text-transparent leading-none"
+                  className="block font-heading text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-400 to-pink-300 bg-clip-text text-transparent leading-none tabular-nums"
                   aria-label={`${value} ${label}`}
                 >
                   {display}

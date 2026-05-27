@@ -17,14 +17,15 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-svh flex flex-col items-center justify-center text-center px-4 py-20 overflow-hidden"
+      className="relative min-h-svh flex flex-col items-center justify-center text-center px-4 py-24 overflow-hidden"
     >
-      {/* Background photo with overlay */}
-      <div className="absolute inset-0 z-0">
+      {/* Background photo with overlay — placeholder bg prevents white flash */}
+      <div className="absolute inset-0 z-0 bg-[#2e0860]">
         <Image
           src="/photos/bisous.webp"
           alt=""
           fill
+          sizes="100vw"
           className="object-cover object-center"
           priority
           aria-hidden="true"
@@ -108,7 +109,7 @@ export function Hero() {
       {/* Scroll hint */}
       <motion.a
         href="#counter"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-pink-200/50 text-xs z-[2]"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-pink-200/50 text-xs z-[2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500/50 rounded-lg px-3 py-1"
         animate={{ y: [0, -10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
         aria-label="Défiler vers le bas"

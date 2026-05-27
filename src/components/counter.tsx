@@ -25,7 +25,7 @@ export function Counter() {
   return (
     <section
       id="counter"
-      className="relative z-[1] min-h-svh flex flex-col items-center justify-center px-4 py-20"
+      className="relative z-[1] min-h-svh flex flex-col items-center justify-center px-4 py-24"
       style={{
         background: "linear-gradient(180deg, #080114 0%, #130230 100%)",
       }}
@@ -38,11 +38,13 @@ export function Counter() {
       />
 
       <motion.div
-        className="flex flex-wrap justify-center gap-3 md:gap-4 max-w-4xl w-full"
+        className="grid grid-cols-3 sm:flex sm:flex-wrap sm:justify-center gap-2.5 sm:gap-3 md:gap-4 max-w-4xl w-full"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
         transition={{ staggerChildren: 0.08 }}
+        role="group"
+        aria-label="Temps passé ensemble"
       >
         {LABELS.map(({ key, label, emoji }) => {
           const value = counter[key as keyof typeof counter];
@@ -53,14 +55,14 @@ export function Counter() {
 
           return (
             <motion.div key={key} variants={cardVariants}>
-              <Card className="bg-white/5 border-pink-500/15 backdrop-blur-xl min-w-[100px] md:min-w-[130px] px-4 py-6 text-center hover:-translate-y-1 hover:shadow-[0_24px_48px_rgba(255,107,157,0.2)] transition-all duration-300">
+              <Card className="bg-white/5 border-pink-500/15 backdrop-blur-xl px-3 sm:px-4 py-5 sm:py-6 text-center sm:min-w-[120px] md:min-w-[130px] hover:-translate-y-1 hover:shadow-[0_24px_48px_rgba(255,107,157,0.2)] transition-all duration-300">
                 <span
-                  className="block font-heading text-4xl md:text-5xl font-bold bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text text-transparent leading-none"
+                  className="block font-heading text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text text-transparent leading-none tabular-nums"
                   aria-label={`${value} ${label}`}
                 >
                   {display}
                 </span>
-                <span className="block text-[0.68rem] text-pink-200/60 uppercase tracking-widest mt-2">
+                <span className="block text-[0.6rem] sm:text-[0.68rem] text-pink-200/60 uppercase tracking-widest mt-2 truncate">
                   {label} {emoji}
                 </span>
               </Card>
