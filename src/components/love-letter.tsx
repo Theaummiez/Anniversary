@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useRef } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { SectionHeader } from "@/components/section-header";
 import { useConfetti } from "@/components/confetti";
 import { LOVE_LETTER } from "@/lib/constants";
@@ -79,7 +80,7 @@ export function LoveLetter() {
 
       {open && (
         <motion.div
-          className="max-w-xl w-full rounded-2xl p-6 md:p-8 shadow-[0_20px_60px_rgba(255,107,157,0.2)]"
+          className="max-w-xl w-full rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(255,107,157,0.2)]"
           style={{
             background: "linear-gradient(160deg, #fff9fc, #fdf0f8)",
           }}
@@ -87,18 +88,32 @@ export function LoveLetter() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h3 className="font-heading text-xl text-pink-500 mb-4">
-            Ma chère Alex 💕
-          </h3>
-          <p
-            className="text-sm md:text-base leading-relaxed text-gray-600 whitespace-pre-wrap min-h-[200px]"
-            aria-live="polite"
-          >
-            {text}
-          </p>
-          <p className="mt-6 font-heading italic text-purple-500">
-            Avec tout mon amour, ton Tomy 💜
-          </p>
+          {/* Wedding photo header */}
+          <div className="relative w-full aspect-[16/9] overflow-hidden">
+            <Image
+              src="/photos/mariage.webp"
+              alt="Notre mariage"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#fff9fc] via-transparent to-transparent" />
+          </div>
+
+          <div className="px-6 pb-8 md:px-8 -mt-6 relative">
+            <h3 className="font-heading text-xl text-pink-500 mb-4">
+              Ma chère Alex 💕
+            </h3>
+            <p
+              className="text-sm md:text-base leading-relaxed text-gray-600 whitespace-pre-wrap min-h-[200px]"
+              aria-live="polite"
+            >
+              {text}
+            </p>
+            <p className="mt-6 font-heading italic text-purple-500">
+              Avec tout mon amour, ton Tomy 💜
+            </p>
+          </div>
         </motion.div>
       )}
     </section>

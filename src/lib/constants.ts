@@ -1,7 +1,7 @@
 import type {
   TimelineEvent,
   QuizQuestion,
-  GalleryItem,
+  GalleryPhoto,
   BucketItem,
 } from "@/types";
 
@@ -27,6 +27,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     title: "Le Commencement",
     description:
       "Le jour où deux âmes joyeuses se sont trouvées. La plus belle rencontre de nos vies 💕",
+    photo: "/photos/plus_ancienne_phto_couple.webp",
   },
   {
     emoji: "✈️",
@@ -34,6 +35,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     title: "Explorateurs du Monde",
     description:
       "Explorer le monde c'est tellement mieux ensemble. Le premier de nos nombreux voyages 🗺️",
+    photo: "/photos/couple_rando_adorable.webp",
   },
   {
     emoji: "🍜",
@@ -41,6 +43,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     title: "Dîner aux éclats de rire",
     description:
       "Ce restaurant où on a ri tellement fort qu'on ne pouvait plus manger 😂 Les rires, c'est notre super pouvoir !",
+    photo: "/photos/dernier_repas_avant_depart.webp",
   },
   {
     emoji: "🎮",
@@ -48,6 +51,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     title: "Les Joueurs Légendaires",
     description:
       "On s'amuse comme des enfants, et c'est exactement pour ça qu'on est si bien ensemble 🏆",
+    photo: "/photos/photo_joueur.webp",
   },
   {
     emoji: "🌸",
@@ -55,6 +59,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     title: "Les Petits Moments Mignons",
     description:
       "Ces instants du quotidien qui font que chaque journée avec toi est un cadeau ☀️",
+    photo: "/photos/photo_couple_cute.webp",
   },
   {
     emoji: "💫",
@@ -62,8 +67,70 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     title: "La Suite Continue...",
     description:
       "Notre histoire ne fait que commencer. Les meilleures pages sont encore devant nous 💕",
+    photo: "/photos/bague_couple.webp",
   },
 ];
+
+export const GALLERY_PHOTOS: GalleryPhoto[] = [
+  // Romantique
+  { src: "/photos/bisous.webp", alt: "Bisous tendres", category: "romantique", aspect: "portrait", featured: true },
+  { src: "/photos/photo_amour_intese.webp", alt: "Moment d'amour intense", category: "romantique", aspect: "portrait" },
+  { src: "/photos/photo_couple_parfait.webp", alt: "Couple parfait", category: "romantique", aspect: "portrait" },
+  { src: "/photos/tomy_bisous_alex.webp", alt: "Tomy embrasse Alex", category: "romantique", aspect: "portrait" },
+  { src: "/photos/photo_mignonne.webp", alt: "Moment mignon", category: "romantique", aspect: "portrait" },
+  { src: "/photos/bague_couple.webp", alt: "Bague de couple", category: "romantique", aspect: "portrait" },
+
+  // Couple
+  { src: "/photos/mariage.webp", alt: "Mariage magique", category: "couple", aspect: "landscape", featured: true },
+  { src: "/photos/photo_couple_cute.webp", alt: "Couple adorable", category: "couple", aspect: "portrait" },
+  { src: "/photos/photo_aestetic.webp", alt: "Photo esthétique", category: "couple", aspect: "portrait" },
+  { src: "/photos/photo_cafee.webp", alt: "Pause café ensemble", category: "couple", aspect: "portrait" },
+  { src: "/photos/couple_soin.webp", alt: "Couple soin", category: "couple", aspect: "portrait" },
+  { src: "/photos/couple_soin_2.webp", alt: "Soins ensemble", category: "couple", aspect: "portrait" },
+  { src: "/photos/plus_ancienne_phto_couple.webp", alt: "Notre plus ancienne photo", category: "couple", aspect: "portrait" },
+  { src: "/photos/noeal_alex.webp", alt: "Noël avec Alex", category: "couple", aspect: "portrait" },
+  { src: "/photos/photo_vert.webp", alt: "Photo dans le vert", category: "couple", aspect: "portrait" },
+
+  // Voyage
+  { src: "/photos/couple_rando_adorable.webp", alt: "Rando adorable", category: "voyage", aspect: "landscape", featured: true },
+  { src: "/photos/photo_couple_vacances.webp", alt: "Vacances à Amsterdam", category: "voyage", aspect: "landscape" },
+  { src: "/photos/couple_rando.webp", alt: "Randonnée ensemble", category: "voyage", aspect: "portrait" },
+  { src: "/photos/photo_rando_trop_beau.webp", alt: "Rando trop beau", category: "voyage", aspect: "landscape" },
+  { src: "/photos/photo_couples_cascade.webp", alt: "Cascade en couple", category: "voyage", aspect: "portrait" },
+  { src: "/photos/photo_tomy_kayak.webp", alt: "Tomy en kayak", category: "voyage", aspect: "portrait" },
+
+  // Fun
+  { src: "/photos/couple_droles.webp", alt: "Couple drôle", category: "fun", aspect: "landscape", featured: true },
+  { src: "/photos/appel_drole.webp", alt: "Appel vidéo drôle", category: "fun", aspect: "portrait" },
+  { src: "/photos/photo_drole.webp", alt: "Moment drôle", category: "fun", aspect: "portrait" },
+  { src: "/photos/photo_fun.webp", alt: "Fun ensemble", category: "fun", aspect: "portrait" },
+  { src: "/photos/photo_fun_coupl.webp", alt: "Fun en couple", category: "fun", aspect: "portrait" },
+  { src: "/photos/photo_joueur.webp", alt: "Les joueurs", category: "fun", aspect: "landscape" },
+  { src: "/photos/photo_call_distance.webp", alt: "Appel à distance", category: "fun", aspect: "portrait" },
+
+  // Solo / Portraits
+  { src: "/photos/alex_ange.webp", alt: "Alex en ange", category: "solo", aspect: "landscape" },
+  { src: "/photos/alex_fashon.webp", alt: "Alex fashion", category: "solo", aspect: "portrait" },
+  { src: "/photos/alex_fun.webp", alt: "Alex fun", category: "solo", aspect: "portrait" },
+  { src: "/photos/alex_mignonne.webp", alt: "Alex mignonne", category: "solo", aspect: "portrait" },
+  { src: "/photos/photo_tomy.webp", alt: "Tomy", category: "solo", aspect: "portrait" },
+  { src: "/photos/chat.webp", alt: "Le chat", category: "solo", aspect: "portrait" },
+
+  // Famille
+  { src: "/photos/famille_maman_alex_tomy.webp", alt: "Famille : Maman, Alex et Tomy", category: "famille", aspect: "landscape" },
+  { src: "/photos/photo_famille.webp", alt: "Photo de famille", category: "famille", aspect: "landscape" },
+  { src: "/photos/dernier_repas_avant_depart.webp", alt: "Dernier repas avant le départ", category: "famille", aspect: "portrait" },
+];
+
+export const GALLERY_CATEGORIES = [
+  { key: "all", label: "Tout", emoji: "✨" },
+  { key: "romantique", label: "Romantique", emoji: "💕" },
+  { key: "couple", label: "Couple", emoji: "💑" },
+  { key: "voyage", label: "Voyages", emoji: "✈️" },
+  { key: "fun", label: "Fun", emoji: "😂" },
+  { key: "solo", label: "Portraits", emoji: "📸" },
+  { key: "famille", label: "Famille", emoji: "👨‍👩‍👧" },
+] as const;
 
 export const QUIZ_QUESTIONS: QuizQuestion[] = [
   {
@@ -123,45 +190,6 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     answerIndex: 2,
     explanation:
       "Sortir, explorer, manger et profiter de chaque instant ensemble 💑",
-  },
-];
-
-export const GALLERY_ITEMS: GalleryItem[] = [
-  {
-    emoji: "💕",
-    caption: "Notre premier moment 🌟",
-    gradient: "from-pink-200 to-pink-300",
-    rotation: -5,
-  },
-  {
-    emoji: "✈️",
-    caption: "En voyage 🗺️",
-    gradient: "from-green-200 to-green-300",
-    rotation: 4,
-  },
-  {
-    emoji: "🎮",
-    caption: "Game night ! 🏆",
-    gradient: "from-purple-200 to-purple-300",
-    rotation: -2,
-  },
-  {
-    emoji: "🌸",
-    caption: "Les beaux jours 🌈",
-    gradient: "from-yellow-100 to-amber-200",
-    rotation: 6,
-  },
-  {
-    emoji: "🌊",
-    caption: "L'aventure ! 🌍",
-    gradient: "from-sky-200 to-sky-300",
-    rotation: -4,
-  },
-  {
-    emoji: "😂",
-    caption: "Nos fous rires 😂",
-    gradient: "from-orange-200 to-orange-300",
-    rotation: 3,
   },
 ];
 

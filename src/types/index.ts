@@ -3,6 +3,7 @@ export interface TimelineEvent {
   date: string;
   title: string;
   description: string;
+  photo?: string;
 }
 
 export interface QuizQuestion {
@@ -12,12 +13,21 @@ export interface QuizQuestion {
   explanation: string;
 }
 
-export interface GalleryItem {
-  emoji: string;
-  caption: string;
-  gradient: string;
-  rotation: number;
+export interface GalleryPhoto {
+  src: string;
+  alt: string;
+  category: GalleryCategory;
+  aspect: "portrait" | "landscape" | "square";
+  featured?: boolean;
 }
+
+export type GalleryCategory =
+  | "couple"
+  | "voyage"
+  | "fun"
+  | "romantique"
+  | "famille"
+  | "solo";
 
 export interface BucketItem {
   emoji: string;
