@@ -47,35 +47,39 @@ export function LoveLetter() {
       />
 
       {!open && (
-        <motion.button
-          onClick={openEnvelope}
-          className="text-center group cursor-pointer focus-visible:outline-none"
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          aria-label="Ouvrir la lettre d'amour"
+          className="text-center"
         >
-          <div className="inline-flex flex-col items-center justify-center bg-gradient-to-br from-pink-400 to-purple-500 rounded-md w-72 sm:w-80 py-10 px-8 shadow-[0_20px_60px_rgba(255,107,157,0.35)] relative overflow-hidden group-hover:scale-[1.04] group-focus-visible:scale-[1.04] group-focus-visible:ring-2 group-focus-visible:ring-pink-400 group-hover:shadow-[0_28px_70px_rgba(255,107,157,0.45)] transition-all duration-300">
-            <div
-              className="absolute inset-x-0 top-0 h-[55%] bg-white/10"
-              style={{ clipPath: "polygon(0 0, 100% 0, 50% 85%)" }}
-              aria-hidden="true"
-            />
-            <span className="text-4xl relative z-[1]" aria-hidden="true">
-              💌
-            </span>
-            <span className="font-heading italic text-lg text-white/90 mt-2 relative z-[1]">
-              Pour ma chère Alex
-            </span>
-          </div>
-          <motion.p
-            className="mt-4 text-pink-200/60 text-sm"
-            animate={{ opacity: [0.55, 1, 0.55] }}
-            transition={{ duration: 2, repeat: Infinity }}
+          <button
+            onClick={openEnvelope}
+            className="group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-[#080114] rounded-lg"
+            aria-label="Ouvrir la lettre d'amour"
           >
-            ✨ Clique pour ouvrir...
-          </motion.p>
-        </motion.button>
+            <div className="inline-flex flex-col items-center justify-center bg-gradient-to-br from-pink-400 to-purple-500 rounded-md w-72 sm:w-80 py-10 px-8 shadow-[0_20px_60px_rgba(255,107,157,0.35)] relative overflow-hidden group-hover:scale-[1.04] group-focus-visible:scale-[1.04] group-focus-visible:ring-2 group-focus-visible:ring-pink-400 group-hover:shadow-[0_28px_70px_rgba(255,107,157,0.45)] transition-all duration-300">
+              <div
+                className="absolute inset-x-0 top-0 h-[55%] bg-white/10"
+                style={{ clipPath: "polygon(0 0, 100% 0, 50% 85%)" }}
+                aria-hidden="true"
+              />
+              <span className="text-4xl relative z-[1]" aria-hidden="true">
+                💌
+              </span>
+              <span className="font-heading italic text-lg text-white/90 mt-2 relative z-[1]">
+                Pour ma chère Alex
+              </span>
+            </div>
+            <motion.p
+              className="mt-4 text-pink-200/60 text-sm"
+              animate={{ opacity: [0.55, 1, 0.55] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              ✨ Clique pour ouvrir...
+            </motion.p>
+          </button>
+        </motion.div>
       )}
 
       {open && (

@@ -79,7 +79,7 @@ export function Gallery() {
               onClick={() => setFilter(key as "all" | GalleryCategory)}
               role="tab"
               aria-selected={filter === key}
-              className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500/50 ${
+              className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 ${
                 filter === key
                   ? "bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-[0_4px_16px_rgba(255,107,157,0.4)]"
                   : "bg-white/5 border border-white/10 text-white/60 hover:text-white hover:border-pink-500/30"
