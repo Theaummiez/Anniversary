@@ -15,7 +15,7 @@ export default function Home() {
     <>
       <Particles />
       <Nav />
-      <main>
+      <main aria-label="Notre belle histoire">
         <Hero />
         <Counter />
         <Timeline />

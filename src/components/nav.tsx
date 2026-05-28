@@ -16,12 +16,13 @@ export function Nav() {
       aria-label="Navigation principale"
     >
       <div className="mt-3 rounded-2xl border border-white/10 bg-black/60 backdrop-blur-xl px-4 py-2 flex items-center gap-1">
+        {/* Desktop links */}
         <div className="hidden md:flex items-center gap-1">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-xs font-semibold text-white/60 hover:text-pink-400 transition-colors px-2.5 py-1.5 rounded-lg hover:bg-white/5"
+              className="text-xs font-semibold text-white/60 hover:text-pink-400 focus-visible:text-pink-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500/50 transition-colors px-2.5 py-1.5 rounded-lg hover:bg-white/5"
             >
               <span aria-hidden="true">{link.emoji}</span>{" "}
               <span>{link.label}</span>
@@ -29,9 +30,10 @@ export function Nav() {
           ))}
         </div>
 
+        {/* Mobile toggle */}
         <button
           onClick={toggle}
-          className="md:hidden p-1.5 text-white/60 hover:text-pink-400 transition-colors"
+          className="md:hidden p-1.5 text-white/60 hover:text-pink-400 focus-visible:text-pink-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500/50 rounded-lg transition-colors"
           aria-expanded={open}
           aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
         >
@@ -39,6 +41,7 @@ export function Nav() {
         </button>
       </div>
 
+      {/* Mobile menu */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -53,7 +56,7 @@ export function Nav() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-2 text-sm text-white/70 hover:text-pink-400 transition-colors px-3 py-2 rounded-lg hover:bg-white/5"
+                className="flex items-center gap-2 text-sm text-white/70 hover:text-pink-400 focus-visible:text-pink-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500/50 transition-colors px-3 py-2 rounded-lg hover:bg-white/5"
               >
                 <span aria-hidden="true">{link.emoji}</span>
                 <span>{link.label}</span>
