@@ -101,6 +101,7 @@ export function Timeline() {
                         fill
                         sizes="(max-width: 768px) 100vw, 45vw"
                         className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                        style={{ objectPosition: event.photoPosition || "center" }}
                         loading="lazy"
                         onLoad={() => markLoaded(photos[0])}
                       />
@@ -134,6 +135,7 @@ export function Timeline() {
                             fill
                             sizes="(max-width: 768px) 50vw, 25vw"
                             className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                        style={{ objectPosition: event.photoPosition || "center" }}
                             loading="lazy"
                             onLoad={() => markLoaded(src)}
                           />
