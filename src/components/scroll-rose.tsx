@@ -2,6 +2,20 @@
 
 import { useEffect, useRef, useState } from "react";
 
+function c(progress: number, start: number, range: number): number {
+  return Math.max(0, Math.min(1, (progress - start) / range));
+}
+
+function petalStyle(progress: number, start: number, range: number, ox: number, oy: number) {
+  const t = c(progress, start, range);
+  return {
+    opacity: t,
+    transform: `scale(${t})`,
+    transformOrigin: `${ox}px ${oy}px`,
+    transition: "opacity 0.12s, transform 0.12s",
+  } as const;
+}
+
 export function ScrollRose() {
   const [progress, setProgress] = useState(0);
   const rafRef = useRef<number>(0);
@@ -32,228 +46,136 @@ export function ScrollRose() {
     >
       <svg
         viewBox="0 0 120 220"
-        className="w-16 h-28 sm:w-20 sm:h-36 md:w-24 md:h-44 drop-shadow-[0_0_12px_rgba(255,107,157,0.3)]"
+        className="w-[4.5rem] h-[7.75rem] sm:w-[5.5rem] sm:h-[10rem] md:w-[6.75rem] md:h-[12.25rem] drop-shadow-[0_0_14px_rgba(255,107,157,0.35)]"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          <linearGradient id="stem-grad" x1="0" y1="0" x2="0" y2="1">
+          <linearGradient id="sg" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#4ade80" />
             <stop offset="100%" stopColor="#16a34a" />
           </linearGradient>
-          <radialGradient id="petal-center" cx="50%" cy="40%" r="50%">
+          <radialGradient id="pc" cx="50%" cy="40%" r="50%">
             <stop offset="0%" stopColor="#fda4af" />
             <stop offset="100%" stopColor="#e11d48" />
           </radialGradient>
-          <radialGradient id="petal-outer" cx="50%" cy="40%" r="60%">
+          <radialGradient id="po" cx="50%" cy="40%" r="60%">
             <stop offset="0%" stopColor="#fb7185" />
             <stop offset="100%" stopColor="#be123c" />
           </radialGradient>
-          <radialGradient id="petal-deep" cx="50%" cy="45%" r="55%">
+          <radialGradient id="pd" cx="50%" cy="45%" r="55%">
             <stop offset="0%" stopColor="#f43f5e" />
             <stop offset="100%" stopColor="#9f1239" />
           </radialGradient>
+          <radialGradient id="pp" cx="45%" cy="35%" r="60%">
+            <stop offset="0%" stopColor="#fecdd3" />
+            <stop offset="100%" stopColor="#f43f5e" />
+          </radialGradient>
         </defs>
 
-        {/* Stem — appears 0-25% */}
+        {/* === STEM (0–25%) === */}
         <path
           d="M60 210 Q58 170 60 130 Q62 100 60 80"
-          stroke="url(#stem-grad)"
+          stroke="url(#sg)"
           strokeWidth="3"
           strokeLinecap="round"
           fill="none"
           style={{
             strokeDasharray: 140,
-            strokeDashoffset: 140 - 140 * Math.min(progress / 0.25, 1),
+            strokeDashoffset: 140 - 140 * c(progress, 0, 0.25),
             transition: "stroke-dashoffset 0.1s ease-out",
           }}
         />
 
-        {/* Left leaf — appears 10-30% */}
-        <path
-          d="M60 170 Q40 155 35 145 Q38 160 55 168"
-          fill="#4ade80"
-          style={{
-            opacity: clamp01((progress - 0.1) / 0.2),
-            transform: `scale(${clamp01((progress - 0.1) / 0.2)})`,
-            transformOrigin: "60px 170px",
-            transition: "opacity 0.15s, transform 0.15s",
-          }}
-        />
+        {/* === LEAVES (10–35%) === */}
+        <path d="M60 170 Q40 155 35 145 Q38 160 55 168" fill="#4ade80"
+          style={petalStyle(progress, 0.1, 0.2, 60, 170)} />
+        <path d="M60 155 Q80 140 85 130 Q82 145 65 153" fill="#22c55e"
+          style={petalStyle(progress, 0.15, 0.2, 60, 155)} />
+        <path d="M60 135 Q42 122 38 112 Q41 126 56 133" fill="#4ade80"
+          style={petalStyle(progress, 0.18, 0.17, 60, 135)} />
 
-        {/* Right leaf — appears 15-35% */}
-        <path
-          d="M60 155 Q80 140 85 130 Q82 145 65 153"
-          fill="#22c55e"
-          style={{
-            opacity: clamp01((progress - 0.15) / 0.2),
-            transform: `scale(${clamp01((progress - 0.15) / 0.2)})`,
-            transformOrigin: "60px 155px",
-            transition: "opacity 0.15s, transform 0.15s",
-          }}
-        />
+        {/* === THORNS (12–22%) === */}
+        <path d="M57 185 L52 180 L58 183" fill="#16a34a"
+          style={{ opacity: c(progress, 0.12, 0.1), transition: "opacity 0.15s" }} />
+        <path d="M63 145 L68 140 L62 143" fill="#16a34a"
+          style={{ opacity: c(progress, 0.2, 0.1), transition: "opacity 0.15s" }} />
 
-        {/* Thorns */}
-        <path
-          d="M57 185 L52 180 L58 183"
-          fill="#16a34a"
-          style={{
-            opacity: clamp01((progress - 0.12) / 0.1),
-            transition: "opacity 0.15s",
-          }}
-        />
-        <path
-          d="M63 145 L68 140 L62 143"
-          fill="#16a34a"
-          style={{
-            opacity: clamp01((progress - 0.2) / 0.1),
-            transition: "opacity 0.15s",
-          }}
-        />
+        {/* === SEPALS (25–40%) === */}
+        <path d="M48 83 Q54 68 60 78 Q57 70 48 83Z" fill="#16a34a"
+          style={petalStyle(progress, 0.25, 0.15, 54, 80)} />
+        <path d="M72 83 Q66 68 60 78 Q63 70 72 83Z" fill="#15803d"
+          style={petalStyle(progress, 0.28, 0.15, 66, 80)} />
+        <path d="M60 85 Q56 72 60 65 Q64 72 60 85Z" fill="#16a34a"
+          style={petalStyle(progress, 0.3, 0.12, 60, 78)} />
 
-        {/* Sepals — appear 25-40% */}
-        <path
-          d="M50 82 Q55 70 60 78 Q58 72 50 82Z"
-          fill="#16a34a"
-          style={{
-            opacity: clamp01((progress - 0.25) / 0.15),
-            transform: `scale(${clamp01((progress - 0.25) / 0.15)})`,
-            transformOrigin: "55px 80px",
-            transition: "opacity 0.15s, transform 0.15s",
-          }}
-        />
-        <path
-          d="M70 82 Q65 70 60 78 Q62 72 70 82Z"
-          fill="#15803d"
-          style={{
-            opacity: clamp01((progress - 0.28) / 0.15),
-            transform: `scale(${clamp01((progress - 0.28) / 0.15)})`,
-            transformOrigin: "65px 80px",
-            transition: "opacity 0.15s, transform 0.15s",
-          }}
-        />
+        {/* === OUTER PETALS layer 1 — wide (32–50%) === */}
+        <path d="M60 78 Q30 62 25 38 Q32 55 52 67 Q40 42 38 20 Q48 42 60 58Z"
+          fill="url(#pd)" style={petalStyle(progress, 0.32, 0.18, 45, 55)} />
+        <path d="M60 78 Q90 62 95 38 Q88 55 68 67 Q80 42 82 20 Q72 42 60 58Z"
+          fill="url(#pd)" style={petalStyle(progress, 0.35, 0.18, 75, 55)} />
+        {/* Bottom-left outer */}
+        <path d="M55 76 Q28 72 22 52 Q30 65 50 72Z"
+          fill="url(#pd)" style={petalStyle(progress, 0.37, 0.16, 40, 68)} />
+        {/* Bottom-right outer */}
+        <path d="M65 76 Q92 72 98 52 Q90 65 70 72Z"
+          fill="url(#pd)" style={petalStyle(progress, 0.39, 0.16, 80, 68)} />
 
-        {/* Outer petals (layer 1) — appear 35-55% */}
-        <path
-          d="M60 75 Q35 60 30 40 Q35 55 55 65 Q45 45 42 25 Q50 45 60 55Z"
-          fill="url(#petal-deep)"
-          style={{
-            opacity: clamp01((progress - 0.35) / 0.2),
-            transform: `scale(${clamp01((progress - 0.35) / 0.2)})`,
-            transformOrigin: "50px 55px",
-            transition: "opacity 0.15s, transform 0.15s",
-          }}
-        />
-        <path
-          d="M60 75 Q85 60 90 40 Q85 55 65 65 Q75 45 78 25 Q70 45 60 55Z"
-          fill="url(#petal-deep)"
-          style={{
-            opacity: clamp01((progress - 0.38) / 0.2),
-            transform: `scale(${clamp01((progress - 0.38) / 0.2)})`,
-            transformOrigin: "70px 55px",
-            transition: "opacity 0.15s, transform 0.15s",
-          }}
-        />
-
-        {/* Middle petals (layer 2) — appear 45-65% */}
-        <path
-          d="M60 70 Q40 55 38 35 Q45 50 55 60 Q48 40 50 22 Q55 42 60 52Z"
-          fill="url(#petal-outer)"
-          style={{
-            opacity: clamp01((progress - 0.45) / 0.2),
-            transform: `scale(${clamp01((progress - 0.45) / 0.2)})`,
-            transformOrigin: "52px 50px",
-            transition: "opacity 0.15s, transform 0.15s",
-          }}
-        />
-        <path
-          d="M60 70 Q80 55 82 35 Q75 50 65 60 Q72 40 70 22 Q65 42 60 52Z"
-          fill="url(#petal-outer)"
-          style={{
-            opacity: clamp01((progress - 0.5) / 0.2),
-            transform: `scale(${clamp01((progress - 0.5) / 0.2)})`,
-            transformOrigin: "68px 50px",
-            transition: "opacity 0.15s, transform 0.15s",
-          }}
-        />
+        {/* === MIDDLE PETALS layer 2 (42–62%) === */}
+        <path d="M60 72 Q38 55 36 32 Q44 50 55 62 Q46 38 48 18 Q54 40 60 54Z"
+          fill="url(#po)" style={petalStyle(progress, 0.42, 0.18, 50, 50)} />
+        <path d="M60 72 Q82 55 84 32 Q76 50 65 62 Q74 38 72 18 Q66 40 60 54Z"
+          fill="url(#po)" style={petalStyle(progress, 0.45, 0.18, 70, 50)} />
+        {/* Side-left */}
+        <path d="M54 68 Q32 58 28 40 Q35 52 50 62Z"
+          fill="url(#po)" style={petalStyle(progress, 0.48, 0.14, 42, 56)} />
+        {/* Side-right */}
+        <path d="M66 68 Q88 58 92 40 Q85 52 70 62Z"
+          fill="url(#po)" style={petalStyle(progress, 0.5, 0.14, 78, 56)} />
         {/* Top petal */}
-        <path
-          d="M55 60 Q50 30 60 15 Q70 30 65 60Z"
-          fill="url(#petal-outer)"
-          style={{
-            opacity: clamp01((progress - 0.55) / 0.15),
-            transform: `scale(${clamp01((progress - 0.55) / 0.15)})`,
-            transformOrigin: "60px 45px",
-            transition: "opacity 0.15s, transform 0.15s",
-          }}
-        />
+        <path d="M54 62 Q48 28 60 12 Q72 28 66 62Z"
+          fill="url(#po)" style={petalStyle(progress, 0.52, 0.14, 60, 42)} />
 
-        {/* Inner petals (layer 3) — appear 60-80% */}
-        <path
-          d="M56 62 Q48 45 52 30 Q56 44 58 55Z"
-          fill="url(#petal-center)"
-          style={{
-            opacity: clamp01((progress - 0.6) / 0.2),
-            transform: `scale(${clamp01((progress - 0.6) / 0.2)})`,
-            transformOrigin: "55px 48px",
-            transition: "opacity 0.15s, transform 0.15s",
-          }}
-        />
-        <path
-          d="M64 62 Q72 45 68 30 Q64 44 62 55Z"
-          fill="url(#petal-center)"
-          style={{
-            opacity: clamp01((progress - 0.65) / 0.2),
-            transform: `scale(${clamp01((progress - 0.65) / 0.2)})`,
-            transformOrigin: "65px 48px",
-            transition: "opacity 0.15s, transform 0.15s",
-          }}
-        />
+        {/* === INNER PETALS layer 3 (56–76%) === */}
+        <path d="M57 64 Q44 48 46 30 Q52 44 58 56Z"
+          fill="url(#pp)" style={petalStyle(progress, 0.56, 0.18, 52, 48)} />
+        <path d="M63 64 Q76 48 74 30 Q68 44 62 56Z"
+          fill="url(#pp)" style={petalStyle(progress, 0.59, 0.18, 68, 48)} />
+        {/* Front-left curl */}
+        <path d="M55 60 Q46 50 48 38 Q52 48 56 55Z"
+          fill="url(#pc)" style={petalStyle(progress, 0.62, 0.14, 52, 50)} />
+        {/* Front-right curl */}
+        <path d="M65 60 Q74 50 72 38 Q68 48 64 55Z"
+          fill="url(#pc)" style={petalStyle(progress, 0.65, 0.14, 68, 50)} />
+        {/* Top inner */}
+        <path d="M57 56 Q54 38 60 28 Q66 38 63 56Z"
+          fill="url(#pc)" style={petalStyle(progress, 0.68, 0.12, 60, 44)} />
 
-        {/* Center bud — appears 75-95% */}
-        <ellipse
-          cx="60"
-          cy="48"
-          rx="6"
-          ry="8"
-          fill="url(#petal-center)"
-          style={{
-            opacity: clamp01((progress - 0.75) / 0.2),
-            transform: `scale(${clamp01((progress - 0.75) / 0.2)})`,
-            transformOrigin: "60px 48px",
-            transition: "opacity 0.15s, transform 0.15s",
-          }}
-        />
+        {/* === CENTER layer 4 (72–90%) === */}
+        <path d="M58 55 Q52 44 55 35 Q58 43 59 50Z"
+          fill="url(#pc)" style={petalStyle(progress, 0.72, 0.14, 56, 46)} />
+        <path d="M62 55 Q68 44 65 35 Q62 43 61 50Z"
+          fill="url(#pc)" style={petalStyle(progress, 0.75, 0.14, 64, 46)} />
+        {/* Center bud */}
+        <ellipse cx="60" cy="46" rx="5" ry="7"
+          fill="url(#pc)" style={petalStyle(progress, 0.8, 0.15, 60, 46)} />
+        {/* Tight center spiral */}
+        <ellipse cx="60" cy="44" rx="3" ry="4"
+          fill="#fda4af" style={petalStyle(progress, 0.85, 0.12, 60, 44)} />
 
-        {/* Glow at full bloom — appears 90-100% */}
-        <circle
-          cx="60"
-          cy="50"
-          r="30"
-          fill="none"
-          stroke="#fb7185"
-          strokeWidth="0.5"
-          style={{
-            opacity: clamp01((progress - 0.9) / 0.1) * 0.3,
-            transition: "opacity 0.2s",
-          }}
-        />
+        {/* === GLOW (90–100%) === */}
+        <circle cx="60" cy="48" r="32" fill="none" stroke="#fb7185" strokeWidth="0.5"
+          style={{ opacity: c(progress, 0.9, 0.1) * 0.25, transition: "opacity 0.2s" }} />
+        <circle cx="60" cy="48" r="22" fill="none" stroke="#fda4af" strokeWidth="0.3"
+          style={{ opacity: c(progress, 0.92, 0.08) * 0.2, transition: "opacity 0.2s" }} />
       </svg>
 
-      {/* Progress label */}
       <p
         className="text-center text-[0.55rem] text-white/30 mt-1 tabular-nums"
-        style={{
-          opacity: progress > 0.02 ? 1 : 0,
-          transition: "opacity 0.3s",
-        }}
+        style={{ opacity: progress > 0.02 ? 1 : 0, transition: "opacity 0.3s" }}
       >
         {Math.round(progress * 100)}%
       </p>
     </div>
   );
-}
-
-function clamp01(value: number): number {
-  return Math.max(0, Math.min(1, value));
 }
