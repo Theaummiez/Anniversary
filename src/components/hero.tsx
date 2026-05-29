@@ -43,7 +43,7 @@ export function Hero() {
             variant="outline"
             className="border-white/15 bg-white/5 text-pink-200/90 text-xs sm:text-sm px-4 py-1.5 backdrop-blur-md tracking-wide"
           >
-            🗓️ Remis ensemble depuis le 4 juin 2025
+            💕 Ensemble malgré la distance depuis le 4 juin 2025
           </Badge>
         </motion.div>
 

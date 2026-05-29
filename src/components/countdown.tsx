@@ -35,14 +35,14 @@ export function Countdown() {
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         aria-hidden="true"
       >
-        🎂
+        ✈️
       </motion.span>
 
       <SectionHeader
-        tag="🎉 Notre prochain anniversaire"
-        title="4 Juin"
-        highlight="arrive bientôt !"
-        description="1 an de retrouvailles — cette fois c'est pour toujours 🥂"
+        tag="🛫 Le jour où je rentre"
+        title="21 Juin 2026"
+        highlight="— J'arrive !"
+        description="Plus de distance, plus d'écrans. Juste toi et moi, enfin réunis pour de bon 💕"
       />
 
       <motion.div
@@ -52,7 +52,7 @@ export function Countdown() {
         viewport={{ once: true, amount: 0.3 }}
         transition={{ staggerChildren: 0.08 }}
         role="group"
-        aria-label="Compte à rebours vers l'anniversaire"
+        aria-label="Compte à rebours vers les retrouvailles"
       >
         {UNITS.map(({ key, label }) => {
           const value = cd[key];
@@ -84,7 +84,7 @@ export function Countdown() {
         viewport={{ once: true }}
         transition={{ delay: 0.4 }}
       >
-        Encore un peu de patience mon amour... 🌟
+        Encore un peu de patience mon amour... Bientôt je serai là 🌟
       </motion.p>
     </section>
   );
