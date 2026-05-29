@@ -70,7 +70,7 @@ export function Hero() {
         </motion.h1>
 
         <motion.p
-          className="text-base sm:text-lg md:text-xl text-white/60 italic max-w-md leading-relaxed"
+          className="text-base sm:text-lg md:text-xl text-white/70 italic max-w-md leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -88,7 +88,7 @@ export function Hero() {
             <Badge
               key={tag}
               variant="outline"
-              className="border-white/10 bg-white/5 text-white/70 text-xs px-3 py-1 backdrop-blur-sm"
+              className="border-white/10 bg-white/5 text-white/80 text-xs px-3 py-1 backdrop-blur-sm"
             >
               {tag}
             </Badge>
@@ -99,7 +99,7 @@ export function Hero() {
       {/* Scroll hint — higher contrast */}
       <motion.a
         href="#counter"
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-white/40 hover:text-white/70 text-xs z-[2] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500/50 rounded-lg px-3 py-1.5"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-white/50 hover:text-white/80 text-xs z-[2] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500/50 rounded-lg px-3 py-1.5"
         animate={{ y: [0, -8, 0] }}
         transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
         aria-label="Défiler vers le bas"

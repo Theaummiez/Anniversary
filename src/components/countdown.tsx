@@ -53,7 +53,7 @@ function CountdownGrid({
               >
                 {display}
               </span>
-              <span className="block text-[0.6rem] sm:text-[0.65rem] text-pink-200/40 uppercase tracking-[0.12em] mt-2">
+              <span className="block text-[0.6rem] sm:text-[0.65rem] text-white/40 uppercase tracking-[0.12em] mt-2">
                 {label}
               </span>
             </Card>
@@ -118,7 +118,7 @@ export function Countdown() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
       >
-        <p className="text-xs text-white/30 tracking-[0.15em] uppercase mb-2">
+        <p className="text-xs text-white/50 tracking-[0.15em] uppercase mb-2">
           🛫 Le jour où je rentre
         </p>
         <h3 className="font-heading text-2xl md:text-3xl font-bold">
@@ -127,7 +127,7 @@ export function Countdown() {
             — J&apos;arrive !
           </span>
         </h3>
-        <p className="text-white/30 text-sm mt-2 max-w-md">
+        <p className="text-white/50 text-sm mt-2 max-w-md">
           Plus de distance, plus d&apos;écrans. Juste toi et moi, enfin réunis
           pour de bon 🏠
         </p>
@@ -142,7 +142,7 @@ export function Countdown() {
       </div>
 
       <motion.p
-        className="mt-10 text-white/30 italic text-sm"
+        className="mt-10 text-white/40 italic text-sm"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}

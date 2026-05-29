@@ -63,7 +63,7 @@ export function Counter() {
                 >
                   {display}
                 </span>
-                <span className="block text-[0.6rem] sm:text-[0.65rem] text-pink-200/40 uppercase tracking-[0.12em] mt-2.5">
+                <span className="block text-[0.6rem] sm:text-[0.65rem] text-white/40 uppercase tracking-[0.12em] mt-2.5">
                   {label}
                 </span>
                 <span className="block text-sm mt-0.5" aria-hidden="true">
@@ -76,7 +76,7 @@ export function Counter() {
       </motion.div>
 
       <motion.p
-        className="mt-10 text-pink-200/40 italic text-sm"
+        className="mt-10 text-white/40 italic text-sm"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}

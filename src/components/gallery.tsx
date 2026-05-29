@@ -83,8 +83,8 @@ export function Gallery() {
                 aria-selected={active}
                 className={`px-3.5 py-2 rounded-lg text-xs font-medium transition-all duration-200 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 ${
                   active
-                    ? "bg-white/10 text-white shadow-sm"
-                    : "text-white/40 hover:text-white/70 hover:bg-white/[0.04]"
+                    ? "bg-white/15 text-white shadow-sm border border-white/10"
+                    : "text-white/50 hover:text-white/80 hover:bg-white/[0.04]"
                 }`}
               >
                 <span aria-hidden="true" className="mr-1">

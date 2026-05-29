@@ -82,7 +82,7 @@ export function BucketList() {
                   className={`w-5 h-5 rounded-full border-[1.5px] flex items-center justify-center shrink-0 transition-all duration-200 ${
                     done
                       ? "bg-amber-400 border-amber-400 text-gray-900"
-                      : "border-white/20"
+                      : "border-white/40"
                   }`}
                   aria-hidden="true"
                 >
@@ -94,8 +94,8 @@ export function BucketList() {
                 <span
                   className={`text-sm transition-all truncate ${
                     done
-                      ? "line-through text-white/30"
-                      : "text-white/70"
+                      ? "line-through text-white/50"
+                      : "text-white/80"
                   }`}
                 >
                   {item.label}
@@ -107,7 +107,7 @@ export function BucketList() {
       </motion.div>
 
       <motion.p
-        className="mt-10 text-white/30 text-sm"
+        className="mt-10 text-white/50 text-sm"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
