@@ -12,11 +12,16 @@ const itemVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
-export function Timeline() {
-  const [loaded, setLoaded] = useState<Set<number>>(new Set());
+function getPhotos(photo?: string | string[]): string[] {
+  if (!photo) return [];
+  return Array.isArray(photo) ? photo : [photo];
+}
 
-  const markLoaded = useCallback((i: number) => {
-    setLoaded((prev) => new Set(prev).add(i));
+export function Timeline() {
+  const [loaded, setLoaded] = useState<Set<string>>(new Set());
+
+  const markLoaded = useCallback((src: string) => {
+    setLoaded((prev) => new Set(prev).add(src));
   }, []);
 
   return (
@@ -47,6 +52,8 @@ export function Timeline() {
 
         {TIMELINE_EVENTS.map((event, i) => {
           const isEven = i % 2 === 1;
+          const photos = getPhotos(event.photo);
+          const hasPhotos = photos.length > 0;
 
           return (
             <motion.div
@@ -61,20 +68,20 @@ export function Timeline() {
               } flex-col md:flex-row`}
             >
               <Card className="flex-1 bg-white/[0.03] border-white/[0.06] backdrop-blur-xl overflow-hidden hover:border-pink-500/20 hover:shadow-[0_8px_32px_rgba(255,107,157,0.08)] transition-all duration-300 group">
-                {/* Photo */}
-                {event.photo && (
+                {/* Single photo */}
+                {photos.length === 1 && (
                   <div className="relative w-full aspect-[16/10] overflow-hidden bg-white/[0.02]">
-                    {!loaded.has(i) && (
+                    {!loaded.has(photos[0]) && (
                       <div className="absolute inset-0 animate-pulse bg-white/[0.04]" />
                     )}
                     <Image
-                      src={event.photo}
+                      src={photos[0]}
                       alt={event.title}
                       fill
                       sizes="(max-width: 768px) 100vw, 45vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                       loading="lazy"
-                      onLoad={() => markLoaded(i)}
+                      onLoad={() => markLoaded(photos[0])}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                     <span className="absolute bottom-3 left-4 text-2xl drop-shadow-lg">
@@ -83,14 +90,45 @@ export function Timeline() {
                   </div>
                 )}
 
+                {/* Two photos side by side */}
+                {photos.length === 2 && (
+                  <div className="grid grid-cols-2 gap-0.5">
+                    {photos.map((src, j) => (
+                      <div
+                        key={j}
+                        className="relative aspect-[3/4] overflow-hidden bg-white/[0.02]"
+                      >
+                        {!loaded.has(src) && (
+                          <div className="absolute inset-0 animate-pulse bg-white/[0.04]" />
+                        )}
+                        <Image
+                          src={src}
+                          alt={`${event.title} — photo ${j + 1}`}
+                          fill
+                          sizes="(max-width: 768px) 50vw, 25vw"
+                          className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                          loading="lazy"
+                          onLoad={() => markLoaded(src)}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                      </div>
+                    ))}
+                    <span className="absolute bottom-3 left-4 text-2xl drop-shadow-lg z-[1]">
+                      {event.emoji}
+                    </span>
+                  </div>
+                )}
+
+                {/* No photo — gradient placeholder */}
+                {!hasPhotos && (
+                  <div className="w-full aspect-[16/10] bg-gradient-to-br from-pink-500/10 via-purple-500/10 to-transparent flex items-center justify-center">
+                    <span className="text-5xl" aria-hidden="true">
+                      {event.emoji}
+                    </span>
+                  </div>
+                )}
+
                 <div className="p-5 md:p-6">
-                  {!event.photo && (
-                    <div className="w-full aspect-[16/10] bg-gradient-to-br from-pink-500/10 via-purple-500/10 to-transparent flex items-center justify-center">
-                      <span className="text-5xl" aria-hidden="true">
-                        {event.emoji}
-                      </span>
-                    </div>
-                  )}
                   <p className="text-[0.65rem] text-amber-400/90 uppercase tracking-[0.12em] font-medium">
                     {event.date}
                   </p>
@@ -103,7 +141,7 @@ export function Timeline() {
                 </div>
               </Card>
 
-              {/* Dot — larger and more visible */}
+              {/* Dot */}
               <div
                 className="hidden md:flex items-center justify-center w-5 h-5 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 border-[3px] border-[#0d0120] shadow-[0_0_16px_rgba(255,107,157,0.4)] shrink-0 z-[1]"
                 aria-hidden="true"

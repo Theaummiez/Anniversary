@@ -3,7 +3,7 @@ export interface TimelineEvent {
   date: string;
   title: string;
   description: string;
-  photo?: string;
+  photo?: string | string[];
 }
 
 export interface GalleryPhoto {

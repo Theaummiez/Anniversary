@@ -36,6 +36,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     title: "Mis Ensemble",
     description:
       "Fin de troisième, on ose enfin. Le début d'une histoire d'amour qui va durer des années 💑",
+    photo: "/photos/photo_vert.webp",
   },
   {
     emoji: "🎮",
@@ -51,7 +52,6 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     title: "La Séparation",
     description:
       "Aucun contact pendant toute l'année. Le silence le plus dur de nos vies. Mais même dans le vide, les sentiments n'ont jamais disparu 🥺",
-    photo: "/photos/photo_call_distance.webp",
   },
   {
     emoji: "🔥",
@@ -59,6 +59,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     title: "Les Retrouvailles",
     description:
       "Après un an sans se parler, on se retrouve. Comme si rien n'avait changé — mais en mieux. Plus forts, plus sûrs, plus amoureux 💕",
+    photo: "/photos/tomy_bisous_alex.webp",
   },
   {
     emoji: "☀️",
@@ -90,6 +91,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     title: "Séparés Mais Ensemble",
     description:
       "Un océan entre nous, mais cette fois on tient bon. Appels, messages, patience. Chaque jour nous rapproche du retour 🛫",
+    photo: ["/photos/alex_mignonne.webp", "/photos/appel_drole.webp"],
   },
   {
     emoji: "🏠",
