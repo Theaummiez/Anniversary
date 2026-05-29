@@ -4,6 +4,7 @@ export interface TimelineEvent {
   title: string;
   description: string;
   photo?: string | string[];
+  photoPosition?: string;
 }
 
 export interface GalleryPhoto {
