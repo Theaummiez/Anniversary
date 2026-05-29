@@ -35,7 +35,7 @@ export function Counter() {
         tag="🕰️ Chaque seconde compte"
         title="Remis ensemble depuis"
         highlight="♾️"
-        description="Ensemble malgré la distance — bientôt réunis pour de bon 💕"
+        description="Retrouvés le 4 juin 2025, à distance depuis août — bientôt réunis 💕"
       />
 
       <motion.div
