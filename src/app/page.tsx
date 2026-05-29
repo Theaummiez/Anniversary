@@ -2,6 +2,7 @@ import { LoginGate } from "@/components/login-gate";
 import { Nav } from "@/components/nav";
 import { Hero } from "@/components/hero";
 import { Counter } from "@/components/counter";
+import { FriendshipCounter } from "@/components/friendship-counter";
 import { Timeline } from "@/components/timeline";
 import { Gallery } from "@/components/gallery";
 import { Quiz } from "@/components/quiz";
@@ -19,6 +20,7 @@ export default function Home() {
       <main aria-label="Notre belle histoire">
         <Hero />
         <Counter />
+        <FriendshipCounter />
         <Timeline />
         <Gallery />
         <Quiz />

@@ -2,12 +2,11 @@
 
 import { useState, useCallback } from "react";
 import type { CounterValues } from "@/types";
-import { RELATIONSHIP_START } from "@/lib/constants";
 import { useInterval } from "@/hooks/use-interval";
 
-function computeCounter(): CounterValues {
+function computeCounter(startDate: Date): CounterValues {
   const now = new Date();
-  const diff = now.getTime() - RELATIONSHIP_START.getTime();
+  const diff = now.getTime() - startDate.getTime();
   if (diff < 0) {
     return { years: 0, months: 0, days: 0, hours: 0, minutes: 0, seconds: 0 };
   }
@@ -24,12 +23,14 @@ function computeCounter(): CounterValues {
   return { years, months, days, hours, minutes, seconds };
 }
 
-export function useCounter(): CounterValues {
-  const [values, setValues] = useState<CounterValues>(computeCounter);
+export function useCounter(startDate: Date): CounterValues {
+  const [values, setValues] = useState<CounterValues>(() =>
+    computeCounter(startDate),
+  );
 
   const tick = useCallback(() => {
-    setValues(computeCounter());
-  }, []);
+    setValues(computeCounter(startDate));
+  }, [startDate]);
 
   useInterval(tick, 1000);
 

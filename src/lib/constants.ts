@@ -6,12 +6,14 @@ import type {
 } from "@/types";
 
 export const RELATIONSHIP_START = new Date("2025-06-04T00:00:00");
+export const FRIENDSHIP_START = new Date("2020-01-15T00:00:00");
 export const ANNIVERSARY_MONTH = 6;
 export const ANNIVERSARY_DAY = 4;
 
 export const NAV_LINKS = [
   { href: "#hero", label: "Nous", emoji: "💕" },
-  { href: "#counter", label: "Compteur", emoji: "⏱️" },
+  { href: "#counter", label: "Couple", emoji: "⏱️" },
+  { href: "#friendship", label: "Amitié", emoji: "🏫" },
   { href: "#timeline", label: "Histoire", emoji: "📖" },
   { href: "#gallery", label: "Souvenirs", emoji: "📸" },
   { href: "#quiz", label: "Quiz", emoji: "🎮" },
