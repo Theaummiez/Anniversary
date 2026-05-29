@@ -24,8 +24,9 @@ const MILESTONES = [
   { emoji: "🏫", label: "Amis au collège", sublabel: "2020", color: "text-purple-300/60" },
   { emoji: "💕", label: "Premier couple", sublabel: "2021", color: "text-pink-300/60" },
   { emoji: "💔", label: "Séparation", sublabel: "2024", color: "text-red-300/50" },
-  { emoji: "🔥", label: "Retrouvailles", sublabel: "2025", color: "text-amber-300/60" },
-  { emoji: "♾️", label: "Pour toujours", sublabel: "", color: "text-white/50" },
+  { emoji: "🔥", label: "Remis ensemble", sublabel: "2025", color: "text-amber-300/60" },
+  { emoji: "🇻🇳", label: "Distance", sublabel: "maintenant", color: "text-blue-300/50" },
+  { emoji: "🏠", label: "Retrouvailles", sublabel: "21 juin 2026", color: "text-white/60" },
 ];
 
 export function FriendshipCounter() {

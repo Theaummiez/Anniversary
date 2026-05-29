@@ -2,21 +2,11 @@
 
 import { useState, useCallback } from "react";
 import type { CountdownValues } from "@/types";
-import { ANNIVERSARY_MONTH, ANNIVERSARY_DAY } from "@/lib/constants";
+import { REUNION_DATE } from "@/lib/constants";
 import { useInterval } from "@/hooks/use-interval";
 
-function nextAnniversary(): Date {
-  const now = new Date();
-  const year = now.getFullYear();
-  const anniversary = new Date(year, ANNIVERSARY_MONTH - 1, ANNIVERSARY_DAY);
-  if (now >= anniversary) {
-    return new Date(year + 1, ANNIVERSARY_MONTH - 1, ANNIVERSARY_DAY);
-  }
-  return anniversary;
-}
-
 function computeCountdown(): CountdownValues {
-  const diff = nextAnniversary().getTime() - Date.now();
+  const diff = REUNION_DATE.getTime() - Date.now();
   if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
 
   return {

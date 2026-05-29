@@ -7,8 +7,7 @@ import type {
 export const FRIENDSHIP_START = new Date("2020-01-15T00:00:00");
 export const FIRST_COUPLE_START = new Date("2021-06-01T00:00:00");
 export const RELATIONSHIP_START = new Date("2025-06-04T00:00:00");
-export const ANNIVERSARY_MONTH = 6;
-export const ANNIVERSARY_DAY = 4;
+export const REUNION_DATE = new Date("2026-06-21T00:00:00");
 
 export const NAV_LINKS = [
   { href: "#hero", label: "Nous", emoji: "💕" },
@@ -18,7 +17,7 @@ export const NAV_LINKS = [
   { href: "#gallery", label: "Souvenirs", emoji: "📸" },
   { href: "#letter", label: "Lettre", emoji: "💌" },
   { href: "#bucket", label: "Rêves", emoji: "✈️" },
-  { href: "#countdown", label: "Anniversaire", emoji: "🎂" },
+  { href: "#countdown", label: "Retrouvailles", emoji: "✈️" },
 ] as const;
 
 export const TIMELINE_EVENTS: TimelineEvent[] = [
@@ -32,26 +31,25 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
   },
   {
     emoji: "💕",
-    date: "Juin 2021 — Le grand saut",
+    date: "2021 — Le grand saut",
     title: "Premier Couple",
     description:
       "Après un an d'amitié, on a osé. Le début d'une histoire d'amour intense, pleine de rires et d'aventures 💑",
-    photo: "/photos/photo_couple_cute.webp",
   },
   {
-    emoji: "✈️",
-    date: "2021–2024 — Nos aventures",
-    title: "Explorateurs du Monde",
+    emoji: "🎮",
+    date: "2021–2024 — Les belles années",
+    title: "Inséparables",
     description:
-      "Des randos, des voyages, des game nights, des fous rires... Quatre années de bonheur pur ensemble 🗺️",
-    photo: "/photos/couple_rando_adorable.webp",
+      "Des game nights, des fous rires, des moments mignons au quotidien... Quatre années de bonheur pur ensemble 🏆",
+    photo: "/photos/photo_joueur.webp",
   },
   {
     emoji: "😢",
-    date: "Dernier Repas Ensemble",
+    date: "2024 — Le départ",
     title: "Dîner avant le départ au Vietnam",
     description:
-      "Ce dernier repas ensemble avant ton départ... Les rires se mêlaient aux larmes. On savait que la distance ne changerait rien, mais dire au revoir, même temporairement, c'était si dur 💔",
+      "Ce dernier repas ensemble avant mon départ au Vietnam... Les rires se mêlaient aux larmes. Dire au revoir, même temporairement, c'était si dur 💔",
     photo: "/photos/dernier_repas_avant_depart.webp",
   },
   {
@@ -59,52 +57,74 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     date: "2024–2025 — L'année de séparation",
     title: "La Distance",
     description:
-      "Une année scolaire loin l'un de l'autre. Chaque jour était un rappel de combien tu me manquais. Mais au fond, on savait qu'on se retrouverait... 🥺",
+      "Une année scolaire séparés, un océan entre nous. Chaque jour était un rappel de combien tu me manquais. Mais au fond, on savait... 🥺",
     photo: "/photos/photo_call_distance.webp",
   },
   {
     emoji: "🔥",
-    date: "4 Juin 2025 — Les Retrouvailles",
+    date: "4 Juin 2025 — Remis ensemble",
     title: "Plus Forts que Jamais",
     description:
-      "On s'est retrouvés. Plus forts, plus sûrs, plus amoureux que jamais. La séparation n'a fait que prouver que rien ne peut nous séparer 💕",
+      "Même à distance, on s'est retrouvés. On s'est remis ensemble, plus sûrs que jamais que rien ne peut nous séparer 💕",
+  },
+  {
+    emoji: "☀️",
+    date: "Été 2025 — Vacances dans le Sud",
+    title: "Nos Retrouvailles",
+    description:
+      "Enfin réunis pour l'été ! Les randos, les cascades, les soirées, les fous rires... On a rattrapé le temps perdu dans le sud de la France ✨",
+    photo: "/photos/couple_rando_adorable.webp",
+  },
+  {
+    emoji: "💍",
+    date: "2025 — Une semaine en France",
+    title: "Retour Éclair",
+    description:
+      "Une semaine de retour en France pour revoir Alex et ma famille. Chaque minute comptait. La bague, les câlins, les promesses... 🥹",
     photo: "/photos/bague_couple.webp",
   },
   {
-    emoji: "♾️",
-    date: "Aujourd'hui & Pour Toujours",
-    title: "La Suite Continue...",
+    emoji: "🇻🇳",
+    date: "Maintenant — Encore au Vietnam",
+    title: "La Distance Continue...",
     description:
-      "5 ans d'amour, 1 an de séparation, et maintenant — ensemble pour toujours. Les meilleures pages sont encore devant nous ✨",
-    photo: "/photos/bisous.webp",
+      "Encore loin, mais cette fois c'est différent. On sait que c'est temporaire. Chaque jour qui passe nous rapproche du 21 juin 2026 🛫",
+    photo: "/photos/photo_call_distance.webp",
+  },
+  {
+    emoji: "🏠",
+    date: "21 Juin 2026 — Les Vraies Retrouvailles",
+    title: "Enfin Ensemble Pour de Bon",
+    description:
+      "Le jour où je rentre définitivement. Plus de distance, plus d'écrans, plus de décalage horaire. Juste toi et moi, enfin. Pour toujours ♾️",
   },
 ];
 
 export const GALLERY_PHOTOS: GalleryPhoto[] = [
   // Romantique
-  { src: "/photos/bisous.webp", alt: "Bisous tendres", category: "romantique", aspect: "portrait", featured: true },
+  { src: "/photos/bisous.webp", alt: "Bisous tendres — été 2025", category: "romantique", aspect: "portrait", featured: true },
   { src: "/photos/photo_amour_intese.webp", alt: "Moment d'amour intense", category: "romantique", aspect: "portrait" },
-  { src: "/photos/photo_couple_parfait.webp", alt: "Couple parfait", category: "romantique", aspect: "portrait" },
+  { src: "/photos/photo_couple_parfait.webp", alt: "Couple parfait — dans le sud", category: "romantique", aspect: "portrait" },
   { src: "/photos/tomy_bisous_alex.webp", alt: "Tomy embrasse Alex", category: "romantique", aspect: "portrait" },
   { src: "/photos/photo_mignonne.webp", alt: "Moment mignon", category: "romantique", aspect: "portrait" },
-  { src: "/photos/bague_couple.webp", alt: "Bague de couple", category: "romantique", aspect: "portrait" },
+  { src: "/photos/bague_couple.webp", alt: "La bague — retour en France", category: "romantique", aspect: "portrait" },
 
   // Couple
   { src: "/photos/mariage.webp", alt: "Mariage magique", category: "couple", aspect: "landscape", featured: true },
-  { src: "/photos/photo_couple_cute.webp", alt: "Couple adorable", category: "couple", aspect: "portrait" },
+  { src: "/photos/photo_couple_cute.webp", alt: "Couple adorable — été 2025", category: "couple", aspect: "portrait" },
   { src: "/photos/photo_aestetic.webp", alt: "Photo esthétique", category: "couple", aspect: "portrait" },
   { src: "/photos/photo_cafee.webp", alt: "Pause café ensemble", category: "couple", aspect: "portrait" },
-  { src: "/photos/couple_soin.webp", alt: "Couple soin", category: "couple", aspect: "portrait" },
+  { src: "/photos/couple_soin.webp", alt: "Soins ensemble — été 2025", category: "couple", aspect: "portrait" },
   { src: "/photos/couple_soin_2.webp", alt: "Soins ensemble", category: "couple", aspect: "portrait" },
-  { src: "/photos/plus_ancienne_phto_couple.webp", alt: "Notre plus ancienne photo", category: "couple", aspect: "portrait" },
+  { src: "/photos/plus_ancienne_phto_couple.webp", alt: "Notre plus ancienne photo — collège", category: "couple", aspect: "portrait" },
   { src: "/photos/noeal_alex.webp", alt: "Noël avec Alex", category: "couple", aspect: "portrait" },
   { src: "/photos/photo_vert.webp", alt: "Photo dans le vert", category: "couple", aspect: "portrait" },
 
-  // Voyage
-  { src: "/photos/couple_rando_adorable.webp", alt: "Rando adorable", category: "voyage", aspect: "landscape", featured: true },
+  // Voyage / Été 2025
+  { src: "/photos/couple_rando_adorable.webp", alt: "Rando dans le sud — été 2025", category: "voyage", aspect: "landscape", featured: true },
   { src: "/photos/photo_couple_vacances.webp", alt: "Vacances à Amsterdam", category: "voyage", aspect: "landscape" },
-  { src: "/photos/couple_rando.webp", alt: "Randonnée ensemble", category: "voyage", aspect: "portrait" },
-  { src: "/photos/photo_rando_trop_beau.webp", alt: "Rando trop beau", category: "voyage", aspect: "landscape" },
+  { src: "/photos/couple_rando.webp", alt: "Randonnée dans le sud", category: "voyage", aspect: "portrait" },
+  { src: "/photos/photo_rando_trop_beau.webp", alt: "Rando trop beau — été 2025", category: "voyage", aspect: "landscape" },
   { src: "/photos/photo_couples_cascade.webp", alt: "Cascade en couple", category: "voyage", aspect: "portrait" },
   { src: "/photos/photo_tomy_kayak.webp", alt: "Tomy en kayak", category: "voyage", aspect: "portrait" },
 
@@ -115,7 +135,7 @@ export const GALLERY_PHOTOS: GalleryPhoto[] = [
   { src: "/photos/photo_fun.webp", alt: "Fun ensemble", category: "fun", aspect: "portrait" },
   { src: "/photos/photo_fun_coupl.webp", alt: "Fun en couple", category: "fun", aspect: "portrait" },
   { src: "/photos/photo_joueur.webp", alt: "Les joueurs", category: "fun", aspect: "landscape" },
-  { src: "/photos/photo_call_distance.webp", alt: "Appel à distance", category: "fun", aspect: "portrait" },
+  { src: "/photos/photo_call_distance.webp", alt: "Appel à distance — depuis le Vietnam", category: "fun", aspect: "portrait" },
 
   // Solo / Portraits
   { src: "/photos/alex_ange.webp", alt: "Alex en ange", category: "solo", aspect: "landscape" },
@@ -135,12 +155,11 @@ export const GALLERY_CATEGORIES = [
   { key: "all", label: "Tout", emoji: "✨" },
   { key: "romantique", label: "Romantique", emoji: "💕" },
   { key: "couple", label: "Couple", emoji: "💑" },
-  { key: "voyage", label: "Voyages", emoji: "✈️" },
+  { key: "voyage", label: "Été 2025", emoji: "☀️" },
   { key: "fun", label: "Fun", emoji: "😂" },
   { key: "solo", label: "Portraits", emoji: "📸" },
   { key: "famille", label: "Famille", emoji: "👨‍👩‍👧" },
 ] as const;
-
 
 export const BUCKET_LIST: BucketItem[] = [
   { emoji: "🗾", label: "Visiter le Japon ensemble" },
@@ -165,11 +184,11 @@ Ta façon de t'émerveiller devant les petites choses mignonnes, ton rire contag
 
 Tu es ma partenaire de voyage préférée, ma complice de jeux, ma meilleure amie. Mais surtout, tu es mon amour. Et je suis le plus chanceux du monde de t'avoir à mes côtés.
 
-On a traversé la distance, on a survécu à la séparation — et on en est sortis plus forts. Ça prouve que ce qu'on a est vrai, indestructible.
+Même si en ce moment un océan nous sépare, chaque appel, chaque message, chaque « tu me manques » me rappelle que ce qu'on a est plus fort que la distance. On a déjà survécu à la séparation — et on en sort plus forts chaque jour.
 
-Notre histoire ne fait que recommencer, et je suis tellement impatient de voir tous les merveilleux moments qui nous attendent encore — les voyages, les rires, les petits moments mignons et les grandes aventures.
+Le 21 juin 2026, je rentre. Pour de bon. Et à partir de ce jour-là, plus rien ne nous séparera.
 
-Merci d'être toi. Merci d'être revenue. Merci d'être avec moi.`;
+Merci d'être toi. Merci d'attendre. Merci d'être avec moi malgré tout.`;
 
 export const CONFETTI_COLORS = [
   "#ff6b9d",
