@@ -11,12 +11,18 @@ import { Countdown } from "@/components/countdown";
 import { Footer } from "@/components/footer";
 import { Particles } from "@/components/particles";
 import { ScrollRose } from "@/components/scroll-rose";
+import { ScrollProgress } from "@/components/scroll-progress";
+import { HeartCursor } from "@/components/heart-cursor";
+import { EasterEgg } from "@/components/easter-egg";
 
 export default function Home() {
   return (
     <LoginGate>
       <Particles />
       <ScrollRose />
+      <ScrollProgress />
+      <HeartCursor />
+      <EasterEgg />
       <Nav />
       <main aria-label="Notre belle histoire">
         <Hero />

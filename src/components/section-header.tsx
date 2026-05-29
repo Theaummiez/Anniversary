@@ -40,7 +40,7 @@ export function SectionHeader({
         className="font-heading text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight leading-tight"
       >
         {title}{" "}
-        <span className="bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text text-transparent">
+        <span className="bg-gradient-to-r from-pink-400 via-purple-400 to-pink-500 bg-clip-text text-transparent animate-gradient">
           {highlight}
         </span>
       </motion.h2>

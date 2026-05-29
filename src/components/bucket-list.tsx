@@ -1,5 +1,6 @@
 "use client";
 
+import { useRipple } from "@/hooks/use-ripple";
 import { useCallback } from "react";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
@@ -20,6 +21,7 @@ export function BucketList() {
     {},
   );
   const launchConfetti = useConfetti();
+  const ripple = useRipple();
 
   const toggle = useCallback(
     (index: number) => {
@@ -61,7 +63,7 @@ export function BucketList() {
           return (
             <motion.div key={i} variants={itemVariants}>
               <Card
-                onClick={() => toggle(i)}
+                onClick={(e) => { ripple(e); toggle(i); }}
                 role="checkbox"
                 aria-checked={done}
                 aria-label={`${item.label} — ${done ? "fait" : "à faire"}`}

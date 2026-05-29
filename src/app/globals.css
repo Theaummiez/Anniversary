@@ -9,6 +9,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
   --font-heading: var(--font-heading);
+  --font-calligraphy: var(--font-calligraphy);
   --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -104,15 +105,48 @@
   .scrollbar-none::-webkit-scrollbar {
     display: none;
   }
+  .font-calligraphy {
+    font-family: var(--font-calligraphy), cursive;
+  }
 }
 
+/* Animated gradient for titles */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
+}
+
+/* Confetti */
 @keyframes confetti-fall {
-  0% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(100vh) rotate(720deg);
-    opacity: 0;
-  }
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+/* Firework particle */
+@keyframes firework-burst {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Ripple */
+@keyframes ripple-expand {
+  0% { transform: scale(0); opacity: 0.4; }
+  100% { transform: scale(4); opacity: 0; }
+}
+
+/* Flip digit */
+@keyframes flip-in {
+  0% { transform: rotateX(90deg); opacity: 0; }
+  100% { transform: rotateX(0deg); opacity: 1; }
+}
+
+/* Parchment unroll */
+@keyframes unroll {
+  0% { max-height: 0; opacity: 0; }
+  100% { max-height: 3000px; opacity: 1; }
 }

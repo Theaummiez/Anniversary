@@ -3,6 +3,7 @@
 import { useState, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { useRipple } from "@/hooks/use-ripple";
 import { SectionHeader } from "@/components/section-header";
 import { PhotoLightbox } from "@/components/photo-lightbox";
 import { GALLERY_PHOTOS, GALLERY_CATEGORIES } from "@/lib/constants";
@@ -27,6 +28,7 @@ export function Gallery() {
     [filter],
   );
 
+  const ripple = useRipple();
   const openLightbox = useCallback((i: number) => setLightboxIndex(i), []);
   const closeLightbox = useCallback(() => setLightboxIndex(null), []);
   const prevPhoto = useCallback(
@@ -78,7 +80,7 @@ export function Gallery() {
             return (
               <button
                 key={key}
-                onClick={() => setFilter(key as "all" | GalleryCategory)}
+                onClick={(e) => { ripple(e); setFilter(key as "all" | GalleryCategory); }}
                 role="tab"
                 aria-selected={active}
                 className={`px-3.5 py-2 rounded-lg text-xs font-medium transition-all duration-200 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 ${
