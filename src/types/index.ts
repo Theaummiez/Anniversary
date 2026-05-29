@@ -6,13 +6,6 @@ export interface TimelineEvent {
   photo?: string;
 }
 
-export interface QuizQuestion {
-  question: string;
-  options: string[];
-  answerIndex: number;
-  explanation: string;
-}
-
 export interface GalleryPhoto {
   src: string;
   alt: string;

@@ -5,7 +5,6 @@ import { Counter } from "@/components/counter";
 import { FriendshipCounter } from "@/components/friendship-counter";
 import { Timeline } from "@/components/timeline";
 import { Gallery } from "@/components/gallery";
-import { Quiz } from "@/components/quiz";
 import { LoveLetter } from "@/components/love-letter";
 import { BucketList } from "@/components/bucket-list";
 import { Countdown } from "@/components/countdown";
@@ -23,7 +22,6 @@ export default function Home() {
         <FriendshipCounter />
         <Timeline />
         <Gallery />
-        <Quiz />
         <LoveLetter />
         <BucketList />
         <Countdown />
