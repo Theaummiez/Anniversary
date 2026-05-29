@@ -29,7 +29,6 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     description:
       "On se croise en troisième au collège. Une amitié naît, et sans le savoir, tout commence ici 🏫",
     photo: "/photos/plus_ancienne_phto_couple.webp",
-    photoPosition: "center 20%",
   },
   {
     emoji: "💕",
@@ -38,7 +37,6 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     description:
       "Fin de troisième, on ose enfin. Le début d'une histoire d'amour qui va durer des années 💑",
     photo: "/photos/photo_vert.webp",
-    photoPosition: "center 25%",
   },
   {
     emoji: "🎮",
@@ -47,7 +45,6 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     description:
       "Quatre ans de bonheur. Des game nights, des fous rires, des moments mignons, des aventures... On était inséparables 🏆",
     photo: "/photos/photo_joueur.webp",
-    photoPosition: "center 30%",
   },
   {
     emoji: "💔",
@@ -63,7 +60,6 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     description:
       "Après un an sans se parler, on se retrouve. Comme si rien n'avait changé — mais en mieux. Plus forts, plus sûrs, plus amoureux 💕",
     photo: "/photos/tomy_bisous_alex.webp",
-    photoPosition: "center 20%",
   },
   {
     emoji: "☀️",
@@ -72,7 +68,6 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     description:
       "Enfin réunis ! Les randos, les cascades, les soirées, les câlins... On rattrape le temps perdu dans le sud de la France ✨",
     photo: "/photos/couple_rando_adorable.webp",
-    photoPosition: "center 30%",
   },
   {
     emoji: "😢",
@@ -80,7 +75,6 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     title: "Dîner avant le Vietnam",
     description:
       "Le dernier repas avant mon départ au Vietnam. Les rires se mêlaient aux larmes. On savait que cette fois, c'était différent — on allait tenir 💔",
-    photoPosition: "center 20%",
     photo: "/photos/dernier_repas_avant_depart.webp",
   },
   {
@@ -89,7 +83,6 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     title: "Retour Éclair",
     description:
       "Une semaine de retour pour revoir Alex et ma famille. Chaque minute comptait. La bague, les câlins, les promesses... 🥹",
-    photoPosition: "center 40%",
     photo: "/photos/bague_couple.webp",
   },
   {
@@ -98,7 +91,6 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     title: "Séparés Mais Ensemble",
     description:
       "Un océan entre nous, mais cette fois on tient bon. Appels, messages, patience. Chaque jour nous rapproche du retour 🛫",
-    photoPosition: "center 15%",
     photo: ["/photos/alex_mignonne.webp", "/photos/appel_drole.webp"],
   },
   {
