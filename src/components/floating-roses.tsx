@@ -1,30 +1,32 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { RosePetal } from "@/components/rose-petal";
 
-const ROSE_EMOJIS = ["🌹", "🥀", "🌺", "🏵️"];
-const PETAL_COUNT = 22;
+const PETAL_COUNT = 24;
 
-interface Rose {
+interface Petal {
   x: number;
   yPercent: number;
   size: number;
   alpha: number;
-  emoji: string;
+  variant: number;
+  hue: number;
   rot: number;
   parallaxSpeed: number;
   driftAmplitude: number;
   driftPhase: number;
 }
 
-function createRose(): Rose {
+function createPetal(): Petal {
   const depth = Math.random();
   return {
     x: Math.random() * 100,
     yPercent: Math.random() * 100,
-    size: 18 + depth * 22,
-    alpha: 0.12 + depth * 0.16,
-    emoji: ROSE_EMOJIS[Math.floor(Math.random() * ROSE_EMOJIS.length)],
+    size: 32 + depth * 36,
+    alpha: 0.35 + depth * 0.35,
+    variant: Math.floor(Math.random() * 4),
+    hue: 340 + Math.random() * 30,
     rot: Math.random() * 360,
     parallaxSpeed: 0.1 + depth * 0.35,
     driftAmplitude: 10 + Math.random() * 25,
@@ -33,8 +35,8 @@ function createRose(): Rose {
 }
 
 export function FloatingRoses() {
-  const [roses] = useState<Rose[]>(() =>
-    Array.from({ length: PETAL_COUNT }, createRose),
+  const [petals] = useState<Petal[]>(() =>
+    Array.from({ length: PETAL_COUNT }, createPetal),
   );
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -50,14 +52,14 @@ export function FloatingRoses() {
       ticking = true;
       requestAnimationFrame(() => {
         const scrollY = window.scrollY;
-        for (let i = 0; i < roses.length; i++) {
-          const r = roses[i];
+        for (let i = 0; i < petals.length; i++) {
+          const p = petals[i];
           const el = elements[i];
           if (!el) continue;
-          const offsetY = scrollY * r.parallaxSpeed;
+          const offsetY = scrollY * p.parallaxSpeed;
           const driftX =
-            Math.sin(scrollY * 0.0015 + r.driftPhase) * r.driftAmplitude;
-          const rotation = r.rot + scrollY * r.parallaxSpeed * 0.06;
+            Math.sin(scrollY * 0.0015 + p.driftPhase) * p.driftAmplitude;
+          const rotation = p.rot + scrollY * p.parallaxSpeed * 0.06;
           el.style.transform = `translate3d(${driftX}px, ${-offsetY}px, 0) rotate(${rotation}deg)`;
         }
         ticking = false;
@@ -68,7 +70,7 @@ export function FloatingRoses() {
     onScroll();
 
     return () => window.removeEventListener("scroll", onScroll);
-  }, [roses]);
+  }, [petals]);
 
   return (
     <div
@@ -77,19 +79,18 @@ export function FloatingRoses() {
       className="absolute inset-0 w-full pointer-events-none z-[1] overflow-hidden"
       style={{ height: "100%" }}
     >
-      {roses.map((r, i) => (
-        <span
+      {petals.map((p, i) => (
+        <div
           key={i}
           className="absolute will-change-transform"
           style={{
-            left: `${r.x}%`,
-            top: `${r.yPercent}%`,
-            fontSize: `${r.size}px`,
-            opacity: r.alpha,
+            left: `${p.x}%`,
+            top: `${p.yPercent}%`,
+            opacity: p.alpha,
           }}
         >
-          {r.emoji}
-        </span>
+          <RosePetal size={p.size} variant={p.variant} hue={p.hue} id={i} />
+        </div>
       ))}
     </div>
   );

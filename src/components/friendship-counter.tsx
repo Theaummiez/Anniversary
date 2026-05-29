@@ -21,12 +21,13 @@ const cardVariants = {
 };
 
 const MILESTONES = [
-  { emoji: "🏫", label: "Amis au collège", sublabel: "2020", color: "text-purple-300/60" },
-  { emoji: "💕", label: "Premier couple", sublabel: "2021", color: "text-pink-300/60" },
-  { emoji: "💔", label: "Séparation", sublabel: "2024", color: "text-red-300/50" },
-  { emoji: "🔥", label: "Remis ensemble", sublabel: "2025", color: "text-amber-300/60" },
-  { emoji: "🇻🇳", label: "Distance", sublabel: "maintenant", color: "text-blue-300/50" },
-  { emoji: "🏠", label: "Retrouvailles", sublabel: "21 juin 2026", color: "text-white/60" },
+  { emoji: "🏫", label: "Rencontre", sublabel: "début 2020", color: "text-purple-300/60" },
+  { emoji: "💕", label: "En couple", sublabel: "fin 2020", color: "text-pink-300/60" },
+  { emoji: "🎮", label: "4 ans ensemble", sublabel: "2020–2024", color: "text-emerald-300/50" },
+  { emoji: "💔", label: "Sans contact", sublabel: "2024–2025", color: "text-red-300/50" },
+  { emoji: "🔥", label: "Retrouvés", sublabel: "4 juin 2025", color: "text-amber-300/60" },
+  { emoji: "🇻🇳", label: "À distance", sublabel: "août 2025", color: "text-blue-300/50" },
+  { emoji: "🏠", label: "Retour", sublabel: "21 juin 2026", color: "text-white/60" },
 ];
 
 export function FriendshipCounter() {
@@ -44,7 +45,7 @@ export function FriendshipCounter() {
         tag="🏫 Depuis le collège, en troisième"
         title="On se connaît depuis"
         highlight={`${counter.years} ans`}
-        description="5 ans de couple, 1 an de séparation, et toujours ensemble 🤝"
+        description="4 ans ensemble, 1 an sans contact, retrouvés, et toujours là 🤝"
       />
 
       <motion.div
