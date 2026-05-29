@@ -4,8 +4,9 @@ import type {
   BucketItem,
 } from "@/types";
 
-export const RELATIONSHIP_START = new Date("2025-06-04T00:00:00");
 export const FRIENDSHIP_START = new Date("2020-01-15T00:00:00");
+export const FIRST_COUPLE_START = new Date("2021-06-01T00:00:00");
+export const RELATIONSHIP_START = new Date("2025-06-04T00:00:00");
 export const ANNIVERSARY_MONTH = 6;
 export const ANNIVERSARY_DAY = 4;
 
@@ -23,18 +24,26 @@ export const NAV_LINKS = [
 export const TIMELINE_EVENTS: TimelineEvent[] = [
   {
     emoji: "🌟",
-    date: "4 Juin 2025 — Le début",
-    title: "Le Commencement",
+    date: "2020 — Troisième au collège",
+    title: "La Rencontre",
     description:
-      "Le jour où deux âmes joyeuses se sont trouvées. La plus belle rencontre de nos vies 💕",
+      "Deux âmes joyeuses qui se croisent en troisième. On ne savait pas encore que cette rencontre allait tout changer 🏫",
     photo: "/photos/plus_ancienne_phto_couple.webp",
   },
   {
+    emoji: "💕",
+    date: "Juin 2021 — Le grand saut",
+    title: "Premier Couple",
+    description:
+      "Après un an d'amitié, on a osé. Le début d'une histoire d'amour intense, pleine de rires et d'aventures 💑",
+    photo: "/photos/photo_couple_cute.webp",
+  },
+  {
     emoji: "✈️",
-    date: "Première Aventure",
+    date: "2021–2024 — Nos aventures",
     title: "Explorateurs du Monde",
     description:
-      "Explorer le monde c'est tellement mieux ensemble. Le premier de nos nombreux voyages 🗺️",
+      "Des randos, des voyages, des game nights, des fous rires... Quatre années de bonheur pur ensemble 🗺️",
     photo: "/photos/couple_rando_adorable.webp",
   },
   {
@@ -46,28 +55,28 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     photo: "/photos/dernier_repas_avant_depart.webp",
   },
   {
-    emoji: "🎮",
-    date: "Game Night",
-    title: "Les Joueurs Légendaires",
+    emoji: "💔",
+    date: "2024–2025 — L'année de séparation",
+    title: "La Distance",
     description:
-      "On s'amuse comme des enfants, et c'est exactement pour ça qu'on est si bien ensemble 🏆",
-    photo: "/photos/photo_joueur.webp",
+      "Une année scolaire loin l'un de l'autre. Chaque jour était un rappel de combien tu me manquais. Mais au fond, on savait qu'on se retrouverait... 🥺",
+    photo: "/photos/photo_call_distance.webp",
   },
   {
-    emoji: "🌸",
-    date: "Chaque jour",
-    title: "Les Petits Moments Mignons",
+    emoji: "🔥",
+    date: "4 Juin 2025 — Les Retrouvailles",
+    title: "Plus Forts que Jamais",
     description:
-      "Ces instants du quotidien qui font que chaque journée avec toi est un cadeau ☀️",
-    photo: "/photos/photo_couple_cute.webp",
+      "On s'est retrouvés. Plus forts, plus sûrs, plus amoureux que jamais. La séparation n'a fait que prouver que rien ne peut nous séparer 💕",
+    photo: "/photos/bague_couple.webp",
   },
   {
-    emoji: "💫",
+    emoji: "♾️",
     date: "Aujourd'hui & Pour Toujours",
     title: "La Suite Continue...",
     description:
-      "Notre histoire ne fait que commencer. Les meilleures pages sont encore devant nous 💕",
-    photo: "/photos/bague_couple.webp",
+      "5 ans d'amour, 1 an de séparation, et maintenant — ensemble pour toujours. Les meilleures pages sont encore devant nous ✨",
+    photo: "/photos/bisous.webp",
   },
 ];
 
@@ -156,9 +165,11 @@ Ta façon de t'émerveiller devant les petites choses mignonnes, ton rire contag
 
 Tu es ma partenaire de voyage préférée, ma complice de jeux, ma meilleure amie. Mais surtout, tu es mon amour. Et je suis le plus chanceux du monde de t'avoir à mes côtés.
 
-Notre histoire ne fait que commencer, et je suis tellement impatient de voir tous les merveilleux moments qui nous attendent encore — les voyages, les rires, les petits moments mignons et les grandes aventures.
+On a traversé la distance, on a survécu à la séparation — et on en est sortis plus forts. Ça prouve que ce qu'on a est vrai, indestructible.
 
-Merci d'être toi. Merci d'être avec moi.`;
+Notre histoire ne fait que recommencer, et je suis tellement impatient de voir tous les merveilleux moments qui nous attendent encore — les voyages, les rires, les petits moments mignons et les grandes aventures.
+
+Merci d'être toi. Merci d'être revenue. Merci d'être avec moi.`;
 
 export const CONFETTI_COLORS = [
   "#ff6b9d",

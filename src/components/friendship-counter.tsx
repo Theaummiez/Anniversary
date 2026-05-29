@@ -20,6 +20,14 @@ const cardVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
+const MILESTONES = [
+  { emoji: "🏫", label: "Amis au collège", sublabel: "2020", color: "text-purple-300/60" },
+  { emoji: "💕", label: "Premier couple", sublabel: "2021", color: "text-pink-300/60" },
+  { emoji: "💔", label: "Séparation", sublabel: "2024", color: "text-red-300/50" },
+  { emoji: "🔥", label: "Retrouvailles", sublabel: "2025", color: "text-amber-300/60" },
+  { emoji: "♾️", label: "Pour toujours", sublabel: "", color: "text-white/50" },
+];
+
 export function FriendshipCounter() {
   const counter = useCounter(FRIENDSHIP_START);
 
@@ -35,7 +43,7 @@ export function FriendshipCounter() {
         tag="🏫 Depuis le collège, en troisième"
         title="On se connaît depuis"
         highlight={`${counter.years} ans`}
-        description="Avant d'être un couple, on était déjà inséparables 🤝"
+        description="5 ans de couple, 1 an de séparation, et toujours ensemble 🤝"
       />
 
       <motion.div
@@ -72,34 +80,31 @@ export function FriendshipCounter() {
         })}
       </motion.div>
 
-      {/* Friendship → Couple timeline */}
+      {/* Full story timeline */}
       <motion.div
-        className="mt-12 flex flex-col sm:flex-row items-center gap-4 sm:gap-6"
+        className="mt-12 flex flex-col sm:flex-row items-center gap-3 sm:gap-0"
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.3 }}
       >
-        <div className="flex items-center gap-2 text-sm text-purple-300/60">
-          <span className="text-lg" aria-hidden="true">🏫</span>
-          <span>Amis au collège</span>
-        </div>
-
-        <div className="hidden sm:block w-16 h-px bg-gradient-to-r from-purple-500/30 to-pink-500/30" aria-hidden="true" />
-        <div className="sm:hidden h-6 w-px bg-gradient-to-b from-purple-500/30 to-pink-500/30" aria-hidden="true" />
-
-        <div className="flex items-center gap-2 text-sm text-pink-300/60">
-          <span className="text-lg" aria-hidden="true">💕</span>
-          <span>En couple — 4 juin 2025</span>
-        </div>
-
-        <div className="hidden sm:block w-16 h-px bg-gradient-to-r from-pink-500/30 to-amber-500/30" aria-hidden="true" />
-        <div className="sm:hidden h-6 w-px bg-gradient-to-b from-pink-500/30 to-amber-500/30" aria-hidden="true" />
-
-        <div className="flex items-center gap-2 text-sm text-amber-300/60">
-          <span className="text-lg" aria-hidden="true">♾️</span>
-          <span>Pour toujours</span>
-        </div>
+        {MILESTONES.map((m, i) => (
+          <div key={i} className="flex items-center">
+            <div className={`flex flex-col items-center gap-0.5 ${m.color}`}>
+              <span className="text-lg" aria-hidden="true">{m.emoji}</span>
+              <span className="text-xs font-medium whitespace-nowrap">{m.label}</span>
+              {m.sublabel && (
+                <span className="text-[0.6rem] opacity-60">{m.sublabel}</span>
+              )}
+            </div>
+            {i < MILESTONES.length - 1 && (
+              <>
+                <div className="hidden sm:block w-10 md:w-14 h-px bg-white/10 mx-2" aria-hidden="true" />
+                <div className="sm:hidden h-5 w-px bg-white/10 my-1" aria-hidden="true" />
+              </>
+            )}
+          </div>
+        ))}
       </motion.div>
     </section>
   );
