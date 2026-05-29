@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { SectionHeader } from "@/components/section-header";
 import { useCounter } from "@/hooks/use-counter";
+import { RELATIONSHIP_START } from "@/lib/constants";
 
 const LABELS: { key: string; label: string; emoji: string }[] = [
   { key: "years", label: "Années", emoji: "🎂" },
@@ -20,7 +21,7 @@ const cardVariants = {
 };
 
 export function Counter() {
-  const counter = useCounter();
+  const counter = useCounter(RELATIONSHIP_START);
 
   return (
     <section
