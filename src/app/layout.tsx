@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Quicksand, Playfair_Display } from "next/font/google";
+import { Quicksand, Playfair_Display, Dancing_Script } from "next/font/google";
 import "./globals.css";
 
 const quicksand = Quicksand({
@@ -13,6 +13,12 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
   weight: ["400", "700"],
   style: ["normal", "italic"],
+});
+
+const dancing = Dancing_Script({
+  variable: "--font-calligraphy",
+  subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
@@ -29,7 +35,7 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${quicksand.variable} ${playfair.variable} dark scroll-smooth`}
+      className={`${quicksand.variable} ${playfair.variable} ${dancing.variable} dark scroll-smooth`}
     >
       <body className="font-sans bg-[#080114] text-white overflow-x-hidden antialiased">
         {children}

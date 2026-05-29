@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Card } from "@/components/ui/card";
 import { SectionHeader } from "@/components/section-header";
+import { FlipDigit } from "@/components/flip-digit";
 import { useCounter } from "@/hooks/use-counter";
 import { RELATIONSHIP_START } from "@/lib/constants";
 
@@ -56,20 +56,7 @@ export function Counter() {
 
           return (
             <motion.div key={key} variants={cardVariants}>
-              <Card className="bg-white/[0.03] border-white/[0.06] backdrop-blur-xl px-2 py-5 sm:py-6 text-center hover:-translate-y-1 hover:border-pink-500/20 hover:shadow-[0_16px_40px_rgba(255,107,157,0.12)] transition-all duration-300">
-                <span
-                  className="block font-heading text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-b from-white to-pink-300 bg-clip-text text-transparent leading-none tabular-nums"
-                  aria-label={`${value} ${label}`}
-                >
-                  {display}
-                </span>
-                <span className="block text-[0.6rem] sm:text-[0.65rem] text-white/40 uppercase tracking-[0.12em] mt-2.5">
-                  {label}
-                </span>
-                <span className="block text-sm mt-0.5" aria-hidden="true">
-                  {emoji}
-                </span>
-              </Card>
+              <FlipDigit value={display} label={label} emoji={emoji} />
             </motion.div>
           );
         })}

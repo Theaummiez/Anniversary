@@ -53,7 +53,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.15 }}
         >
-          <span className="bg-gradient-to-br from-pink-200 via-pink-400 to-pink-500 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-pink-200 via-pink-400 to-rose-500 bg-clip-text text-transparent animate-gradient">
             Alex
           </span>
           <motion.span
@@ -64,7 +64,7 @@ export function Hero() {
           >
             💕
           </motion.span>
-          <span className="bg-gradient-to-br from-purple-200 via-purple-400 to-purple-600 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-purple-200 via-purple-400 to-fuchsia-500 bg-clip-text text-transparent animate-gradient">
             Tomy
           </span>
         </motion.h1>
