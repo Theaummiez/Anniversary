@@ -18,6 +18,9 @@ export const NAV_LINKS = [
   { href: "#gallery", label: "Souvenirs", emoji: "📸" },
   { href: "#letter", label: "Lettre", emoji: "💌" },
   { href: "#bucket", label: "Rêves", emoji: "✈️" },
+  { href: "#playlist", label: "Musique", emoji: "🎵" },
+  { href: "#horoscope", label: "Astro", emoji: "🔮" },
+  { href: "#jetaime", label: "Je t'aime", emoji: "💕" },
   { href: "#countdown", label: "Retrouvailles", emoji: "✈️" },
 ] as const;
 
