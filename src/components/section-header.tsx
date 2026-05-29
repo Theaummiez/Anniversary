@@ -30,7 +30,7 @@ export function SectionHeader({
     >
       <motion.p
         variants={fadeUp}
-        className="text-xs sm:text-sm text-pink-300/60 tracking-[0.15em] uppercase mb-3"
+        className="text-xs sm:text-sm text-pink-300/70 tracking-[0.15em] uppercase mb-3"
       >
         {tag}
       </motion.p>
@@ -47,7 +47,7 @@ export function SectionHeader({
 
       <motion.p
         variants={fadeUp}
-        className="text-pink-200/50 text-sm md:text-base mt-4 max-w-md leading-relaxed"
+        className="text-white/50 text-sm md:text-base mt-4 max-w-md leading-relaxed"
       >
         {description}
       </motion.p>

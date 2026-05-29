@@ -92,7 +92,7 @@ export function LoveLetter() {
       )}
 
       {open && (
-        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-10 max-w-7xl w-full">
+        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-8 max-w-7xl w-full">
           {/* Letter */}
           <motion.div
             className="flex-1 max-w-xl w-full rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(255,107,157,0.15)]"
@@ -120,7 +120,7 @@ export function LoveLetter() {
                 Ma chère Alex 💕
               </h3>
               <p
-                className="text-sm md:text-base leading-[1.8] text-gray-500 whitespace-pre-wrap min-h-[200px]"
+                className="text-base leading-[1.9] text-gray-600 whitespace-pre-wrap min-h-[200px]"
                 aria-live="polite"
               >
                 {text}

@@ -21,13 +21,11 @@ const cardVariants = {
 };
 
 const MILESTONES = [
-  { emoji: "🏫", label: "Rencontre", sublabel: "début 2020", color: "text-purple-300/60" },
-  { emoji: "💕", label: "En couple", sublabel: "fin 2020", color: "text-pink-300/60" },
-  { emoji: "🎮", label: "4 ans ensemble", sublabel: "2020–2024", color: "text-emerald-300/50" },
-  { emoji: "💔", label: "Sans contact", sublabel: "2024–2025", color: "text-red-300/50" },
-  { emoji: "🔥", label: "Retrouvés", sublabel: "4 juin 2025", color: "text-amber-300/60" },
-  { emoji: "🇻🇳", label: "À distance", sublabel: "août 2025", color: "text-blue-300/50" },
-  { emoji: "🏠", label: "Retour", sublabel: "21 juin 2026", color: "text-white/60" },
+  { emoji: "💕", label: "En couple", sublabel: "2020", color: "text-pink-300/70" },
+  { emoji: "🎮", label: "4 ans ensemble", sublabel: "2020–2024", color: "text-emerald-300/60" },
+  { emoji: "💔", label: "Sans contact", sublabel: "2024–2025", color: "text-red-300/60" },
+  { emoji: "🔥", label: "Retrouvés", sublabel: "4 juin 2025", color: "text-amber-300/70" },
+  { emoji: "🏠", label: "Retour", sublabel: "21 juin 2026", color: "text-white/70" },
 ];
 
 export function FriendshipCounter() {
@@ -73,7 +71,7 @@ export function FriendshipCounter() {
                 >
                   {display}
                 </span>
-                <span className="block text-[0.6rem] sm:text-[0.65rem] text-purple-200/40 uppercase tracking-[0.12em] mt-2.5">
+                <span className="block text-[0.6rem] sm:text-[0.65rem] text-white/40 uppercase tracking-[0.12em] mt-2.5">
                   {label}
                 </span>
               </Card>

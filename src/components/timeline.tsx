@@ -85,17 +85,19 @@ export function Timeline() {
 
                 <div className="p-5 md:p-6">
                   {!event.photo && (
-                    <span className="text-2xl block mb-2" aria-hidden="true">
-                      {event.emoji}
-                    </span>
+                    <div className="w-full aspect-[16/10] bg-gradient-to-br from-pink-500/10 via-purple-500/10 to-transparent flex items-center justify-center">
+                      <span className="text-5xl" aria-hidden="true">
+                        {event.emoji}
+                      </span>
+                    </div>
                   )}
-                  <p className="text-[0.65rem] text-amber-400/80 uppercase tracking-[0.12em] font-medium">
+                  <p className="text-[0.65rem] text-amber-400/90 uppercase tracking-[0.12em] font-medium">
                     {event.date}
                   </p>
                   <h3 className="font-heading text-lg md:text-xl font-bold mt-1.5 mb-2">
                     {event.title}
                   </h3>
-                  <p className="text-sm text-white/50 leading-relaxed">
+                  <p className="text-sm text-white/60 leading-relaxed">
                     {event.description}
                   </p>
                 </div>
