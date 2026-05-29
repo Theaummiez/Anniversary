@@ -33,9 +33,9 @@ export function Counter() {
     >
       <SectionHeader
         tag="🕰️ Chaque seconde compte"
-        title="On est ensemble depuis"
+        title="Remis ensemble depuis"
         highlight="♾️"
-        description="Chaque instant passé avec toi est précieux 💕"
+        description="1 an de retrouvailles — plus forts que jamais 💕"
       />
 
       <motion.div

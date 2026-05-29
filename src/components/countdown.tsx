@@ -42,7 +42,7 @@ export function Countdown() {
         tag="🎉 Notre prochain anniversaire"
         title="4 Juin"
         highlight="arrive bientôt !"
-        description="Bientôt 1 an ensemble — et c'est juste le début 🥂"
+        description="1 an de retrouvailles — cette fois c'est pour toujours 🥂"
       />
 
       <motion.div
