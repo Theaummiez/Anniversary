@@ -38,11 +38,11 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     photo: "/photos/couple_rando_adorable.webp",
   },
   {
-    emoji: "🍜",
-    date: "Un Soir Parfait",
-    title: "Dîner aux éclats de rire",
+    emoji: "😢",
+    date: "Dernier Repas Ensemble",
+    title: "Dîner avant le départ au Vietnam",
     description:
-      "Ce restaurant où on a ri tellement fort qu'on ne pouvait plus manger 😂 Les rires, c'est notre super pouvoir !",
+      "Ce dernier repas ensemble avant ton départ... Les rires se mêlaient aux larmes. On savait que la distance ne changerait rien, mais dire au revoir, même temporairement, c'était si dur 💔",
     photo: "/photos/dernier_repas_avant_depart.webp",
   },
   {
