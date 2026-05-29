@@ -1,6 +1,5 @@
 import type {
   TimelineEvent,
-  QuizQuestion,
   GalleryPhoto,
   BucketItem,
 } from "@/types";
@@ -16,7 +15,6 @@ export const NAV_LINKS = [
   { href: "#friendship", label: "Amitié", emoji: "🏫" },
   { href: "#timeline", label: "Histoire", emoji: "📖" },
   { href: "#gallery", label: "Souvenirs", emoji: "📸" },
-  { href: "#quiz", label: "Quiz", emoji: "🎮" },
   { href: "#letter", label: "Lettre", emoji: "💌" },
   { href: "#bucket", label: "Rêves", emoji: "✈️" },
   { href: "#countdown", label: "Anniversaire", emoji: "🎂" },
@@ -134,66 +132,6 @@ export const GALLERY_CATEGORIES = [
   { key: "famille", label: "Famille", emoji: "👨‍👩‍👧" },
 ] as const;
 
-export const QUIZ_QUESTIONS: QuizQuestion[] = [
-  {
-    question: "🌍 Quelle destination de rêve vous voulez visiter ensemble ?",
-    options: [
-      "🗾 Le Japon",
-      "🗼 Paris la nuit",
-      "🏝️ Bali au coucher du soleil",
-      "🗽 New York City",
-    ],
-    answerIndex: 0,
-    explanation:
-      "Le Japon avec ses cerisiers, ses temples et ses choses trop mignonnes ! 🌸",
-  },
-  {
-    question: "🌸 Qu'est-ce qu'Alex adore le plus dans la vie ?",
-    options: [
-      "🎵 La musique",
-      "🌸 Les choses mignonnes",
-      "🎬 Les films",
-      "🍕 La nourriture",
-    ],
-    answerIndex: 1,
-    explanation:
-      "Alex adore TOUT ce qui est mignon — c'est ce qui la rend si irrésistible ! 🥰",
-  },
-  {
-    question: "💕 Comment Tomy décrit Alex en un mot ?",
-    options: [
-      "Incroyable 🌟",
-      "Magique ✨",
-      "Mignonne 🌸",
-      "Parfaite 💎",
-    ],
-    answerIndex: 3,
-    explanation: "Parfaite ! Dans tous les sens du terme 💕",
-  },
-  {
-    question: "🎮 Notre activité préférée quand on s'ennuie ?",
-    options: [
-      "Netflix sans fin 📺",
-      "Jouer ensemble 🎮",
-      "Cuisiner ensemble 🍳",
-      "Partir impromptu ✈️",
-    ],
-    answerIndex: 1,
-    explanation: "Des vrais gamers ! On est imbattables ensemble 🏆",
-  },
-  {
-    question: "✈️ Notre journée parfaite ensemble c'est...",
-    options: [
-      "Grasse matinée + Netflix 🛋️",
-      "Road trip surprise 🚗",
-      "Balade + resto + folie 🌆",
-      "Spa et détente 🧖",
-    ],
-    answerIndex: 2,
-    explanation:
-      "Sortir, explorer, manger et profiter de chaque instant ensemble 💑",
-  },
-];
 
 export const BUCKET_LIST: BucketItem[] = [
   { emoji: "🗾", label: "Visiter le Japon ensemble" },
