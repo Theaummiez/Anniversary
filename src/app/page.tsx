@@ -1,3 +1,4 @@
+import { LoginGate } from "@/components/login-gate";
 import { Nav } from "@/components/nav";
 import { Hero } from "@/components/hero";
 import { Counter } from "@/components/counter";
@@ -12,7 +13,7 @@ import { Particles } from "@/components/particles";
 
 export default function Home() {
   return (
-    <>
+    <LoginGate>
       <Particles />
       <Nav />
       <main aria-label="Notre belle histoire">
@@ -26,6 +27,6 @@ export default function Home() {
         <Countdown />
       </main>
       <Footer />
-    </>
+    </LoginGate>
   );
 }
