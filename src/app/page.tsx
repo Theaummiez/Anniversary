@@ -10,27 +10,25 @@ import { BucketList } from "@/components/bucket-list";
 import { Countdown } from "@/components/countdown";
 import { Footer } from "@/components/footer";
 import { Particles } from "@/components/particles";
-import { FloatingRoses } from "@/components/floating-roses";
+import { ScrollRose } from "@/components/scroll-rose";
 
 export default function Home() {
   return (
     <LoginGate>
       <Particles />
+      <ScrollRose />
       <Nav />
-      <div className="relative">
-        <FloatingRoses />
-        <main aria-label="Notre belle histoire">
-          <Hero />
-          <Counter />
-          <FriendshipCounter />
-          <Timeline />
-          <Gallery />
-          <LoveLetter />
-          <BucketList />
-          <Countdown />
-        </main>
-        <Footer />
-      </div>
+      <main aria-label="Notre belle histoire">
+        <Hero />
+        <Counter />
+        <FriendshipCounter />
+        <Timeline />
+        <Gallery />
+        <LoveLetter />
+        <BucketList />
+        <Countdown />
+      </main>
+      <Footer />
     </LoginGate>
   );
 }
