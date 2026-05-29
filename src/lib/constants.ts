@@ -8,6 +8,7 @@ export const FRIENDSHIP_START = new Date("2020-01-15T00:00:00");
 export const FIRST_COUPLE_START = new Date("2020-06-15T00:00:00");
 export const RELATIONSHIP_START = new Date("2025-06-04T00:00:00");
 export const REUNION_DATE = new Date("2026-06-21T00:00:00");
+export const ANNIVERSARY_DATE = new Date("2026-06-04T00:00:00");
 
 export const NAV_LINKS = [
   { href: "#hero", label: "Nous", emoji: "💕" },

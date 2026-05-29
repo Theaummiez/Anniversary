@@ -2,11 +2,10 @@
 
 import { useState, useCallback } from "react";
 import type { CountdownValues } from "@/types";
-import { REUNION_DATE } from "@/lib/constants";
 import { useInterval } from "@/hooks/use-interval";
 
-function computeCountdown(): CountdownValues {
-  const diff = REUNION_DATE.getTime() - Date.now();
+function computeCountdown(target: Date): CountdownValues {
+  const diff = target.getTime() - Date.now();
   if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
 
   return {
@@ -17,12 +16,14 @@ function computeCountdown(): CountdownValues {
   };
 }
 
-export function useCountdown(): CountdownValues {
-  const [values, setValues] = useState<CountdownValues>(computeCountdown);
+export function useCountdown(target: Date): CountdownValues {
+  const [values, setValues] = useState<CountdownValues>(() =>
+    computeCountdown(target),
+  );
 
   const tick = useCallback(() => {
-    setValues(computeCountdown());
-  }, []);
+    setValues(computeCountdown(target));
+  }, [target]);
 
   useInterval(tick, 1000);
 
