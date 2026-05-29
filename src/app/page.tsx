@@ -6,9 +6,6 @@ import { FriendshipCounter } from "@/components/friendship-counter";
 import { Timeline } from "@/components/timeline";
 import { Gallery } from "@/components/gallery";
 import { LoveLetter } from "@/components/love-letter";
-import { Playlist } from "@/components/playlist";
-import { Horoscope } from "@/components/horoscope";
-import { LoveCounter } from "@/components/love-counter";
 import { BucketList } from "@/components/bucket-list";
 import { Countdown } from "@/components/countdown";
 import { Footer } from "@/components/footer";
@@ -17,7 +14,6 @@ import { ScrollRose } from "@/components/scroll-rose";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { HeartCursor } from "@/components/heart-cursor";
 import { EasterEgg } from "@/components/easter-egg";
-import { NotificationSetup } from "@/components/notification-setup";
 
 export default function Home() {
   return (
@@ -27,7 +23,6 @@ export default function Home() {
       <ScrollProgress />
       <HeartCursor />
       <EasterEgg />
-      <NotificationSetup />
       <Nav />
       <main aria-label="Notre belle histoire">
         <Hero />
@@ -36,9 +31,6 @@ export default function Home() {
         <Timeline />
         <Gallery />
         <LoveLetter />
-        <Playlist />
-        <Horoscope />
-        <LoveCounter />
         <BucketList />
         <Countdown />
       </main>
