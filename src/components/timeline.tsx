@@ -1,12 +1,15 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Card } from "@/components/ui/card";
 import { SectionHeader } from "@/components/section-header";
 import { TIMELINE_EVENTS } from "@/lib/constants";
 import { useTilt } from "@/hooks/use-tilt";
+
+const TimelineVine = dynamic(() => import("@/components/timeline-vine").then(mod => ({ default: mod.TimelineVine })), { ssr: false });
 
 const itemVariants = {
   hidden: { opacity: 0, y: 24 },
@@ -55,14 +58,8 @@ export function Timeline() {
       />
 
       <div className="relative max-w-3xl w-full">
-        <div
-          className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 hidden md:block"
-          style={{
-            background:
-              "linear-gradient(180deg, transparent, rgba(255,107,157,0.3) 15%, rgba(196,77,255,0.3) 85%, transparent)",
-          }}
-          aria-hidden="true"
-        />
+        <TimelineVine />
+
 
         {TIMELINE_EVENTS.map((event, i) => {
           const isEven = i % 2 === 1;
