@@ -11,6 +11,7 @@ import { BucketList } from "@/components/bucket-list";
 import { Countdown } from "@/components/countdown";
 import { Footer } from "@/components/footer";
 import { Particles } from "@/components/particles";
+import { Fireworks } from "@/components/fireworks";
 import { ScrollRose } from "@/components/scroll-rose";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { HeartCursor } from "@/components/heart-cursor";
@@ -37,6 +38,7 @@ export default function Home() {
         <Countdown />
       </main>
       <Footer />
+      <Fireworks />
     </LoginGate>
   );
 }
