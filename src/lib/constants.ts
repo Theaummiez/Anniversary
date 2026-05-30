@@ -2,6 +2,7 @@ import type {
   TimelineEvent,
   GalleryPhoto,
   BucketItem,
+  MusicTrack,
 } from "@/types";
 
 export const FRIENDSHIP_START = new Date("2020-01-15T00:00:00");
@@ -16,6 +17,7 @@ export const NAV_LINKS = [
   { href: "#friendship", label: "Amitié", emoji: "🏫" },
   { href: "#timeline", label: "Histoire", emoji: "📖" },
   { href: "#gallery", label: "Souvenirs", emoji: "📸" },
+  { href: "#music", label: "Musique", emoji: "🎶" },
   { href: "#letter", label: "Lettre", emoji: "💌" },
   { href: "#bucket", label: "Rêves", emoji: "✈️" },
   { href: "#countdown", label: "Retrouvailles", emoji: "✈️" },
@@ -176,6 +178,39 @@ export const BUCKET_LIST: BucketItem[] = [
   { emoji: "🛥️", label: "Croisière romantique" },
   { emoji: "📸", label: "Séance photo officielle en couple" },
   { emoji: "🎪", label: "Aller à un festival ensemble" },
+];
+
+export const MUSIC_TRACKS: MusicTrack[] = [
+  {
+    title: "Chocolat",
+    artist: "Ya Levis",
+    url: "https://www.youtube.com/watch?v=4KM8SRuVqv0",
+  },
+  {
+    title: "Je te promets",
+    artist: "Johnny Hallyday",
+    url: "https://www.youtube.com/watch?v=3C9BAtS23dA",
+  },
+  {
+    title: "La Vie en Rose",
+    artist: "Édith Piaf",
+    url: "https://www.youtube.com/watch?v=kFzViYkZAz4",
+  },
+  {
+    title: "All of Me",
+    artist: "John Legend",
+    url: "https://www.youtube.com/watch?v=450p7goxZqg",
+  },
+  {
+    title: "Perfect",
+    artist: "Ed Sheeran",
+    url: "https://www.youtube.com/watch?v=2Vv-BfVoq4g",
+  },
+  {
+    title: "Ami(e)",
+    artist: "Vitaa & Slimane",
+    url: "https://www.youtube.com/watch?v=ed-z8c2GrFs",
+  },
 ];
 
 export const LOVE_LETTER = `Je prends ce moment pour te dire tout ce que mon cœur ressent.

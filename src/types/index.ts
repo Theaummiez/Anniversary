@@ -27,6 +27,12 @@ export interface BucketItem {
   label: string;
 }
 
+export interface MusicTrack {
+  title: string;
+  artist: string;
+  url: string;
+}
+
 export interface CounterValues {
   years: number;
   months: number;
