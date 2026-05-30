@@ -74,104 +74,200 @@ export function Timeline() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: i * 0.08 }}
-              className={`flex items-center gap-5 mb-8 md:mb-10 ${
-                isEven ? "md:flex-row-reverse" : ""
-              } flex-col md:flex-row`}
+              className="relative grid items-center gap-5 mb-8 md:mb-10 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]"
             >
-              <TiltCard>
-                <Card className="flex-1 bg-white/[0.03] border-white/[0.06] backdrop-blur-xl overflow-hidden hover:border-pink-500/20 hover:shadow-[0_8px_32px_rgba(255,107,157,0.08)] transition-shadow duration-300 group">
-                  {/* Single photo with curtain reveal */}
-                  {photos.length === 1 && (
-                    <motion.div
-                      className="relative w-full aspect-[16/10] overflow-hidden bg-white/[0.02]"
-                      initial={{ clipPath: "inset(100% 0 0 0)" }}
-                      whileInView={{ clipPath: "inset(0% 0 0 0)" }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.8, ease: "easeOut" }}
-                    >
-                      {!loaded.has(photos[0]) && (
-                        <div className="absolute inset-0 animate-pulse bg-white/[0.04]" />
-                      )}
-                      <Image
-                        src={photos[0]}
-                        alt={event.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 45vw"
-                        className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                        loading="lazy"
-                        onLoad={() => markLoaded(photos[0])}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                      <span className="absolute bottom-3 left-4 text-2xl drop-shadow-lg">
-                        {event.emoji}
-                      </span>
-                    </motion.div>
-                  )}
-
-                  {/* Two photos side by side with curtain reveal */}
-                  {photos.length === 2 && (
-                    <motion.div
-                      className="relative grid grid-cols-2 gap-0.5"
-                      initial={{ clipPath: "inset(100% 0 0 0)" }}
-                      whileInView={{ clipPath: "inset(0% 0 0 0)" }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.8, ease: "easeOut" }}
-                    >
-                      {photos.map((src, j) => (
-                        <div
-                          key={j}
-                          className="relative aspect-[3/4] overflow-hidden bg-white/[0.02]"
+              <div className="md:col-span-1">
+                {!isEven ? (
+                  <TiltCard>
+                    <Card className="flex-1 bg-white/[0.03] border-white/[0.06] backdrop-blur-xl overflow-hidden hover:border-pink-500/20 hover:shadow-[0_8px_32px_rgba(255,107,157,0.08)] transition-shadow duration-300 group">
+                      {/* Single photo with curtain reveal */}
+                      {photos.length === 1 && (
+                        <motion.div
+                          className="relative w-full aspect-[16/10] overflow-hidden bg-white/[0.02]"
+                          initial={{ clipPath: "inset(100% 0 0 0)" }}
+                          whileInView={{ clipPath: "inset(0% 0 0 0)" }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.8, ease: "easeOut" }}
                         >
-                          {!loaded.has(src) && (
+                          {!loaded.has(photos[0]) && (
                             <div className="absolute inset-0 animate-pulse bg-white/[0.04]" />
                           )}
                           <Image
-                            src={src}
-                            alt={`${event.title} — photo ${j + 1}`}
+                            src={photos[0]}
+                            alt={event.title}
                             fill
-                            sizes="(max-width: 768px) 50vw, 25vw"
+                            sizes="(max-width: 768px) 100vw, 45vw"
                             className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                             loading="lazy"
-                            onLoad={() => markLoaded(src)}
+                            onLoad={() => markLoaded(photos[0])}
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                          <span className="absolute bottom-3 left-4 text-2xl drop-shadow-lg">
+                            {event.emoji}
+                          </span>
+                        </motion.div>
+                      )}
+
+                      {/* Two photos side by side with curtain reveal */}
+                      {photos.length === 2 && (
+                        <motion.div
+                          className="relative grid grid-cols-2 gap-0.5"
+                          initial={{ clipPath: "inset(100% 0 0 0)" }}
+                          whileInView={{ clipPath: "inset(0% 0 0 0)" }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.8, ease: "easeOut" }}
+                        >
+                          {photos.map((src, j) => (
+                            <div
+                              key={j}
+                              className="relative aspect-[3/4] overflow-hidden bg-white/[0.02]"
+                            >
+                              {!loaded.has(src) && (
+                                <div className="absolute inset-0 animate-pulse bg-white/[0.04]" />
+                              )}
+                              <Image
+                                src={src}
+                                alt={`${event.title} — photo ${j + 1}`}
+                                fill
+                                sizes="(max-width: 768px) 50vw, 25vw"
+                                className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                                loading="lazy"
+                                onLoad={() => markLoaded(src)}
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                            </div>
+                          ))}
+                          <span className="absolute bottom-3 left-4 text-2xl drop-shadow-lg z-[1]">
+                            {event.emoji}
+                          </span>
+                        </motion.div>
+                      )}
+
+                      {/* No photo placeholder */}
+                      {!hasPhotos && (
+                        <div className="w-full aspect-[16/10] bg-gradient-to-br from-pink-500/10 via-purple-500/10 to-transparent flex items-center justify-center">
+                          <span className="text-5xl" aria-hidden="true">
+                            {event.emoji}
+                          </span>
                         </div>
-                      ))}
-                      <span className="absolute bottom-3 left-4 text-2xl drop-shadow-lg z-[1]">
-                        {event.emoji}
-                      </span>
-                    </motion.div>
-                  )}
+                      )}
 
-                  {/* No photo placeholder */}
-                  {!hasPhotos && (
-                    <div className="w-full aspect-[16/10] bg-gradient-to-br from-pink-500/10 via-purple-500/10 to-transparent flex items-center justify-center">
-                      <span className="text-5xl" aria-hidden="true">
-                        {event.emoji}
-                      </span>
-                    </div>
-                  )}
-
-                  <div className="p-5 md:p-6">
-                    <p className="text-[0.65rem] text-amber-400/90 uppercase tracking-[0.12em] font-medium">
-                      {event.date}
-                    </p>
-                    <h3 className="font-heading text-lg md:text-xl font-bold mt-1.5 mb-2">
-                      {event.title}
-                    </h3>
-                    <p className="text-sm text-white/60 leading-relaxed">
-                      {event.description}
-                    </p>
-                  </div>
-                </Card>
-              </TiltCard>
+                      <div className="p-5 md:p-6">
+                        <p className="text-[0.65rem] text-amber-400/90 uppercase tracking-[0.12em] font-medium">
+                          {event.date}
+                        </p>
+                        <h3 className="font-heading text-lg md:text-xl font-bold mt-1.5 mb-2">
+                          {event.title}
+                        </h3>
+                        <p className="text-sm text-white/60 leading-relaxed">
+                          {event.description}
+                        </p>
+                      </div>
+                    </Card>
+                  </TiltCard>
+                ) : (
+                  <div className="hidden md:block" />
+                )}
+              </div>
 
               <div
                 className="hidden md:flex items-center justify-center w-5 h-5 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 border-[3px] border-[#0d0120] shadow-[0_0_16px_rgba(255,107,157,0.4)] shrink-0 z-[1]"
                 aria-hidden="true"
               />
 
-              <div className="flex-1 hidden md:block" />
+              <div className="md:col-span-1">
+                {isEven ? (
+                  <TiltCard>
+                    <Card className="flex-1 bg-white/[0.03] border-white/[0.06] backdrop-blur-xl overflow-hidden hover:border-pink-500/20 hover:shadow-[0_8px_32px_rgba(255,107,157,0.08)] transition-shadow duration-300 group">
+                      {/* Single photo with curtain reveal */}
+                      {photos.length === 1 && (
+                        <motion.div
+                          className="relative w-full aspect-[16/10] overflow-hidden bg-white/[0.02]"
+                          initial={{ clipPath: "inset(100% 0 0 0)" }}
+                          whileInView={{ clipPath: "inset(0% 0 0 0)" }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.8, ease: "easeOut" }}
+                        >
+                          {!loaded.has(photos[0]) && (
+                            <div className="absolute inset-0 animate-pulse bg-white/[0.04]" />
+                          )}
+                          <Image
+                            src={photos[0]}
+                            alt={event.title}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 45vw"
+                            className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                            loading="lazy"
+                            onLoad={() => markLoaded(photos[0])}
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                          <span className="absolute bottom-3 left-4 text-2xl drop-shadow-lg">
+                            {event.emoji}
+                          </span>
+                        </motion.div>
+                      )}
+
+                      {/* Two photos side by side with curtain reveal */}
+                      {photos.length === 2 && (
+                        <motion.div
+                          className="relative grid grid-cols-2 gap-0.5"
+                          initial={{ clipPath: "inset(100% 0 0 0)" }}
+                          whileInView={{ clipPath: "inset(0% 0 0 0)" }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.8, ease: "easeOut" }}
+                        >
+                          {photos.map((src, j) => (
+                            <div
+                              key={j}
+                              className="relative aspect-[3/4] overflow-hidden bg-white/[0.02]"
+                            >
+                              {!loaded.has(src) && (
+                                <div className="absolute inset-0 animate-pulse bg-white/[0.04]" />
+                              )}
+                              <Image
+                                src={src}
+                                alt={`${event.title} — photo ${j + 1}`}
+                                fill
+                                sizes="(max-width: 768px) 50vw, 25vw"
+                                className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                                loading="lazy"
+                                onLoad={() => markLoaded(src)}
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                            </div>
+                          ))}
+                          <span className="absolute bottom-3 left-4 text-2xl drop-shadow-lg z-[1]">
+                            {event.emoji}
+                          </span>
+                        </motion.div>
+                      )}
+
+                      {/* No photo placeholder */}
+                      {!hasPhotos && (
+                        <div className="w-full aspect-[16/10] bg-gradient-to-br from-pink-500/10 via-purple-500/10 to-transparent flex items-center justify-center">
+                          <span className="text-5xl" aria-hidden="true">
+                            {event.emoji}
+                          </span>
+                        </div>
+                      )}
+
+                      <div className="p-5 md:p-6">
+                        <p className="text-[0.65rem] text-amber-400/90 uppercase tracking-[0.12em] font-medium">
+                          {event.date}
+                        </p>
+                        <h3 className="font-heading text-lg md:text-xl font-bold mt-1.5 mb-2">
+                          {event.title}
+                        </h3>
+                        <p className="text-sm text-white/60 leading-relaxed">
+                          {event.description}
+                        </p>
+                      </div>
+                    </Card>
+                  </TiltCard>
+                ) : (
+                  <div className="hidden md:block" />
+                )}
+              </div>
             </motion.div>
           );
         })}

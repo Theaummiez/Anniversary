@@ -3,142 +3,173 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-/**
- * TimelineVine Component
- * Displays an animated growing vine with roses, thorns, and leaves
- * that grows when the timeline section enters the viewport.
- * Replaces the static vertical line to visually connect timeline events.
- */
 export function TimelineVine() {
   const svgRef = useRef<SVGSVGElement | null>(null);
   const [isVineInView, setIsVineInView] = useState(false);
-  const [vineStrokeDashOffset, setVineStrokeDashOffset] = useState(1000);
 
-  // Trigger animation when timeline section becomes visible
+  const TOTAL_VINE_LENGTH = 10000;
+  const [vineStrokeDashOffset, setVineStrokeDashOffset] = useState(
+    TOTAL_VINE_LENGTH,
+  );
+
   useEffect(() => {
     const timelineSection = document.getElementById("timeline");
     if (!timelineSection) return;
 
-    const intersectionObserver = new IntersectionObserver(
+    const observer = new IntersectionObserver(
       (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setIsVineInView(true);
-            intersectionObserver.disconnect();
-          }
+        if (entries[0]?.isIntersecting) {
+          setIsVineInView(true);
+          observer.disconnect();
         }
       },
-      {
-        threshold: 0.1,
-      },
+      { threshold: 0.1 },
     );
 
-    intersectionObserver.observe(timelineSection);
-    return () => intersectionObserver.disconnect();
+    observer.observe(timelineSection);
+
+    return () => observer.disconnect();
   }, []);
 
-  // Animate the vine drawing when it comes into view
   useEffect(() => {
     if (!isVineInView) return;
 
-    const VINE_DRAW_DURATION = 2000; // 2 seconds
-    const animationStartTime = Date.now();
+    const DURATION = 2000;
+    const start = Date.now();
 
-    const drawVineFrame = () => {
-      const elapsedTime = Date.now() - animationStartTime;
-      const animationProgress = Math.min(elapsedTime / VINE_DRAW_DURATION, 1);
-      setVineStrokeDashOffset(1000 * (1 - animationProgress));
+    const animate = () => {
+      const elapsed = Date.now() - start;
+      const progress = Math.min(elapsed / DURATION, 1);
 
-      if (animationProgress < 1) {
-        requestAnimationFrame(drawVineFrame);
+      setVineStrokeDashOffset(
+        TOTAL_VINE_LENGTH * (1 - progress),
+      );
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
       }
     };
 
-    requestAnimationFrame(drawVineFrame);
+    requestAnimationFrame(animate);
   }, [isVineInView]);
+
+  const leftThorns = [
+    500, 1200, 1900, 2600, 3300,
+    4000, 4700, 5400, 6100, 6800,
+    7500, 8200, 8900,
+  ];
+
+  const rightThorns = [
+    850, 1550, 2250, 2950, 3650,
+    4350, 5050, 5750, 6450, 7150,
+    7850, 8550, 9250,
+  ];
+
+  const roses = [
+    900, 1800, 2700, 3600, 4500,
+    5400, 6300, 7200, 8100, 9000,
+  ];
+
+  const leaves = [
+    400, 1100, 1800, 2500, 3200,
+    3900, 4600, 5300, 6000, 6700,
+    7400, 8100, 8800, 9500,
+  ];
 
   return (
     <svg
       ref={svgRef}
-      className="absolute left-1/2 top-0 bottom-0 w-12 -translate-x-1/2 pointer-events-none hidden md:block"
-      viewBox="0 0 100 1200"
+      className="absolute left-1/2 top-0 bottom-0 w-12 -translate-x-1/2 pointer-events-none hidden md:block z-[2]"
+      viewBox="0 0 100 10000"
       preserveAspectRatio="none"
       aria-hidden="true"
     >
       <defs>
-        <linearGradient id="vineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="rgba(255,107,157,0)" />
-          <stop offset="30%" stopColor="rgba(255,107,157,0.8)" />
-          <stop offset="70%" stopColor="rgba(196,77,255,0.8)" />
-          <stop offset="100%" stopColor="rgba(196,77,255,0)" />
+        <linearGradient
+          id="vineGradient"
+          x1="0%"
+          y1="0%"
+          x2="0%"
+          y2="100%"
+        >
+          <stop offset="0%" stopColor="rgba(255,107,157,0.1)" />
+          <stop offset="25%" stopColor="rgba(255,107,157,0.95)" />
+          <stop offset="55%" stopColor="rgba(196,77,255,0.95)" />
+          <stop offset="85%" stopColor="rgba(196,77,255,0.6)" />
+          <stop offset="100%" stopColor="rgba(196,77,255,0.2)" />
         </linearGradient>
       </defs>
 
-      {/* Main vine stem - sinuous path */}
       <path
-        d="M 50 0 Q 30 80, 50 160 Q 70 240, 50 320 Q 30 400, 50 480 Q 70 560, 50 640 Q 30 720, 50 800 Q 70 880, 50 960 Q 30 1040, 50 1120 L 50 1200"
+        d="
+          M 50 0
+          Q 30 500, 50 1000
+          Q 70 1500, 50 2000
+          Q 30 2500, 50 3000
+          Q 70 3500, 50 4000
+          Q 30 4500, 50 5000
+          Q 70 5500, 50 6000
+          Q 30 6500, 50 7000
+          Q 70 7500, 50 8000
+          Q 30 8500, 50 9000
+          L 50 10000
+        "
         stroke="url(#vineGradient)"
-        strokeWidth="2.5"
+        strokeWidth="3"
         fill="none"
         strokeLinecap="round"
-        strokeDasharray="1000"
+        strokeDasharray={TOTAL_VINE_LENGTH}
         strokeDashoffset={vineStrokeDashOffset}
       />
 
-      {/* Left thorns */}
-      {[0, 160, 320, 480, 640, 800, 960].map((y, i) => (
+      {leftThorns.map((y, i) => (
         <motion.line
           key={`thorn-left-${i}`}
           x1="50"
           y1={y}
           x2="25"
-          y2={y + 20}
+          y2={y + 40}
           stroke="rgba(255,107,157,0.6)"
           strokeWidth="1.5"
           initial={{ opacity: 0, pathLength: 0 }}
           animate={isVineInView ? { opacity: 1, pathLength: 1 } : {}}
           transition={{
-            delay: 0.3 + i * 0.15,
+            delay: 0.3 + i * 0.08,
             duration: 0.4,
           }}
-          strokeLinecap="round"
         />
       ))}
 
-      {/* Right thorns */}
-      {[80, 240, 400, 560, 720, 880, 1040].map((y, i) => (
+      {rightThorns.map((y, i) => (
         <motion.line
           key={`thorn-right-${i}`}
           x1="50"
           y1={y}
           x2="75"
-          y2={y + 20}
+          y2={y + 40}
           stroke="rgba(196,77,255,0.6)"
           strokeWidth="1.5"
           initial={{ opacity: 0, pathLength: 0 }}
           animate={isVineInView ? { opacity: 1, pathLength: 1 } : {}}
           transition={{
-            delay: 0.3 + i * 0.15,
+            delay: 0.3 + i * 0.08,
             duration: 0.4,
           }}
-          strokeLinecap="round"
         />
       ))}
 
-      {/* Small roses along the vine */}
-      {[160, 320, 480, 640, 800, 960].map((y, i) => (
+      {roses.map((y, i) => (
         <motion.g
           key={`rose-${i}`}
           initial={{ opacity: 0, scale: 0 }}
           animate={isVineInView ? { opacity: 1, scale: 1 } : {}}
           transition={{
-            delay: 0.5 + i * 0.12,
+            delay: 0.5 + i * 0.1,
             duration: 0.5,
             type: "spring",
             stiffness: 200,
           }}
         >
-          {/* Rose petals */}
           <circle cx="50" cy={y} r="6" fill="rgba(255,107,157,0.3)" />
           <circle cx="45" cy={y - 3} r="4" fill="rgba(255,107,157,0.6)" />
           <circle cx="55" cy={y - 3} r="4" fill="rgba(255,107,157,0.6)" />
@@ -148,21 +179,23 @@ export function TimelineVine() {
         </motion.g>
       ))}
 
-      {/* Decorative leaves */}
-      {[100, 250, 400, 550, 700, 850, 1000].map((y, i) => (
+      {leaves.map((y, i) => (
         <motion.path
           key={`leaf-${i}`}
-          d={`M 50 ${y} Q ${i % 2 === 0 ? 35 : 65} ${y - 8}, ${i % 2 === 0 ? 25 : 75} ${y - 12}`}
+          d={`M 50 ${y} Q ${
+            i % 2 === 0 ? 35 : 65
+          } ${y - 20}, ${
+            i % 2 === 0 ? 25 : 75
+          } ${y - 40}`}
           stroke="rgba(34,197,94,0.4)"
           strokeWidth="1"
           fill="none"
           initial={{ opacity: 0, pathLength: 0 }}
           animate={isVineInView ? { opacity: 1, pathLength: 1 } : {}}
           transition={{
-            delay: 0.4 + i * 0.1,
+            delay: 0.4 + i * 0.08,
             duration: 0.3,
           }}
-          strokeLinecap="round"
         />
       ))}
     </svg>
