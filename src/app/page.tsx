@@ -12,6 +12,7 @@ import { Countdown } from "@/components/countdown";
 import { Footer } from "@/components/footer";
 import { Particles } from "@/components/particles";
 import { Fireworks } from "@/components/fireworks";
+import { ClickHearts } from "@/components/click-hearts";
 import { ScrollRose } from "@/components/scroll-rose";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { HeartCursor } from "@/components/heart-cursor";
@@ -21,6 +22,7 @@ export default function Home() {
   return (
     <LoginGate>
       <Particles />
+      <ClickHearts />
       <ScrollRose />
       <ScrollProgress />
       <HeartCursor />
