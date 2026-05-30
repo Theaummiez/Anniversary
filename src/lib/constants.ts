@@ -19,7 +19,7 @@ export const NAV_LINKS = [
   { href: "#gallery", label: "Souvenirs", emoji: "📸" },
   { href: "#music", label: "Musique", emoji: "🎶" },
   { href: "#letter", label: "Lettre", emoji: "💌" },
-  { href: "#bucket", label: "Rêves", emoji: "✈️" },
+  { href: "#bucket", label: "Rêves", emoji: "💭" },
   { href: "#countdown", label: "Retrouvailles", emoji: "✈️" },
 ] as const;
 
@@ -216,6 +216,71 @@ export const MUSIC_TRACKS: MusicTrack[] = [
     artist: "Ed Sheeran",
     url: "https://www.youtube.com/watch?v=JGwWNGJdvx8&list=RDJGwWNGJdvx8&start_radio=1",
   },
+  {
+  title: "A Thousand Years",
+  artist: "Christina Perri",
+  url: "https://www.youtube.com/watch?v=rtOvBOTyX00",
+  },
+  {
+  title: "Just the Way You Are",
+  artist: "Bruno Mars",
+  url: "https://www.youtube.com/watch?v=LjhCEhWiKXk",
+  },
+  {
+  title: "Thinking Out Loud",
+  artist: "Ed Sheeran",
+  url: "https://www.youtube.com/watch?v=lp-EO5I60KA",
+  },
+  {
+  title: "Until I Found You",
+  artist: "Stephen Sanchez",
+  url: "https://www.youtube.com/watch?v=GxldQ9eX2wo",
+  },
+  {
+  title: "Can’t Help Falling in Love",
+  artist: "Elvis Presley",
+  url: "https://www.youtube.com/watch?v=vGJTaP6anOU",
+  },
+  {
+  title: "You Are The Reason",
+  artist: "Calum Scott",
+  url: "https://www.youtube.com/watch?v=ShZ978fBl6Y",
+  },
+  {
+  title: "Say You Won't Let Go",
+  artist: "James Arthur",
+  url: "https://www.youtube.com/watch?v=0yW7w8F2TVA",
+  },
+  {
+  title: "Love Me Like You Do",
+  artist: "Ellie Goulding",
+  url: "https://www.youtube.com/watch?v=AJtDXIazrMo",
+  },
+  {
+  title: "Photograph",
+  artist: "Ed Sheeran",
+  url: "https://www.youtube.com/watch?v=nSDgHBxUbVQ",
+  },
+  {
+  title: "Make You Feel My Love",
+  artist: "Adele",
+  url: "https://www.youtube.com/watch?v=0put0_a--Ng",
+  },
+  {
+  title: "I Don't Want to Miss a Thing",
+  artist: "Aerosmith",
+  url: "https://www.youtube.com/watch?v=JkK8g6FMEXE",
+  },
+  {
+  title: "Someone You Loved",
+  artist: "Lewis Capaldi",
+  url: "https://www.youtube.com/watch?v=zABLecsR5UE",
+  },
+  {
+  title: "Love Story",
+  artist: "Taylor Swift",
+  url: "https://www.youtube.com/watch?v=8xg3vE8Ie_E",
+} ,
 ];
 
 export const LOVE_LETTER = `Je prends ce moment pour te dire tout ce que mon cœur ressent.
