@@ -84,7 +84,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     date: "2025 — Une semaine en France",
     title: "Retour Éclair",
     description:
-      "Une semaine de retour pour revoir Alex et ma famille. Chaque minute comptait. La bague, les câlins, les promesses... 🥹",
+      "Trois petites semaines de retour pour revoir Alex et ma famille. Chaque minute comptait. La bague, les câlins, les promesses... 🥹",
     photo: "/photos/bague_couple.webp",
   },
   {
@@ -184,32 +184,37 @@ export const MUSIC_TRACKS: MusicTrack[] = [
   {
     title: "Chocolat",
     artist: "Ya Levis",
-    url: "https://www.youtube.com/watch?v=4KM8SRuVqv0",
+    url: "https://www.youtube.com/watch?v=UjITcGuHzpQ&list=RDUjITcGuHzpQ&start_radio=1",
   },
   {
     title: "Je te promets",
     artist: "Johnny Hallyday",
-    url: "https://www.youtube.com/watch?v=3C9BAtS23dA",
+    url: "https://www.youtube.com/watch?v=-TkrMyXYbik&list=RD-TkrMyXYbik&start_radio=1",
   },
   {
     title: "La Vie en Rose",
-    artist: "Édith Piaf",
-    url: "https://www.youtube.com/watch?v=kFzViYkZAz4",
+    artist: "Louis Armstrong",
+    url: "https://www.youtube.com/watch?v=9n-hyA2-FDg&list=RD9n-hyA2-FDg&start_radio=1",
   },
   {
     title: "All of Me",
     artist: "John Legend",
-    url: "https://www.youtube.com/watch?v=450p7goxZqg",
+    url: "https://www.youtube.com/watch?v=QfgJQUiQFes&list=RDQfgJQUiQFes&start_radio=1",
   },
   {
     title: "Perfect",
     artist: "Ed Sheeran",
-    url: "https://www.youtube.com/watch?v=2Vv-BfVoq4g",
+    url: "https://www.youtube.com/watch?v=cNGjD0VG4R8&list=RDcNGjD0VG4R8&start_radio=1",
   },
   {
-    title: "Ami(e)",
+    title: "Avant Toi",
     artist: "Vitaa & Slimane",
-    url: "https://www.youtube.com/watch?v=ed-z8c2GrFs",
+    url: "https://www.youtube.com/watch?v=d6BzCEkGd3I&list=RDd6BzCEkGd3I&start_radio=1",
+  },
+  {
+    title: "Shape of You",
+    artist: "Ed Sheeran",
+    url: "https://www.youtube.com/watch?v=JGwWNGJdvx8&list=RDJGwWNGJdvx8&start_radio=1",
   },
 ];
 
@@ -227,7 +232,7 @@ Même si en ce moment un océan nous sépare, chaque appel, chaque message me ra
 
 Le 21 juin 2026, je rentre. Pour de bon. Et à partir de ce jour-là, plus rien ne nous séparera.
 
-Merci d'être toi. Merci d'avoir attendu. Merci d'être avec moi malgré tout.`;
+Merci d'être toi. Merci d'avoir attendu. Merci d'être avec moi malgré tout. Je t'aime ma Petite Princesse, et je t'aimerai pour toujours.`;
 
 export const CONFETTI_COLORS = [
   "#ff6b9d",
