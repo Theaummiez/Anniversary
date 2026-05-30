@@ -90,7 +90,8 @@ export function Fireworks() {
     }
 
     function update() {
-      ctx.clearRect(0, 0, canvasElement.width, canvasElement.height);
+      if (!canvasElement) return;
+      //ctx.clearRect(0, 0, canvasElement.width, canvasElement.height);
       ctx.fillStyle = "rgba(0,0,0,0.18)";
       ctx.fillRect(0, 0, canvasElement.width, canvasElement.height);
 
