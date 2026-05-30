@@ -63,9 +63,9 @@ export function Fireworks() {
   const triggered = useRef(false);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d")!;
+    const canvasElement = canvasRef.current;
+    if (!canvasElement) return;
+    const ctx = canvasElement.getContext("2d")!;
 
     let animationId = 0;
     let spawnInterval: number | undefined;
@@ -73,9 +73,8 @@ export function Fireworks() {
     let sparks: Spark[] = [];
 
     function resize() {
-      if (!canvas) return;
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      canvasElement.width = window.innerWidth;
+      canvasElement.height = window.innerHeight;
     }
 
     resize();
@@ -89,9 +88,9 @@ export function Fireworks() {
     }
 
     function update() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvasElement.width, canvasElement.height);
       ctx.fillStyle = "rgba(0,0,0,0.18)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillRect(0, 0, canvasElement.width, canvasElement.height);
 
       rockets = rockets.filter((rocket) => !rocket.exploded);
       for (const rocket of rockets) {
