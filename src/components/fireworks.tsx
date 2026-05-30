@@ -73,8 +73,10 @@ export function Fireworks() {
     let sparks: Spark[] = [];
 
     function resize() {
-      canvasElement.width = window.innerWidth;
-      canvasElement.height = window.innerHeight;
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
     }
 
     resize();
