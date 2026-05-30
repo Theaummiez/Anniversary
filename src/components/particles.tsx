@@ -43,16 +43,17 @@ export function Particles() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    const canvasElement = canvas;
     let animationId: number;
 
     function resize() {
-      canvas!.width = window.innerWidth;
-      canvas!.height = window.innerHeight;
+      canvasElement.width = window.innerWidth;
+      canvasElement.height = window.innerHeight;
     }
     resize();
 
     const particles: Particle[] = Array.from({ length: 35 }, () =>
-      createParticle(canvas!.width, canvas!.height, true),
+      createParticle(canvasElement.width, canvasElement.height, true),
     );
 
     const spawnInterval = setInterval(() => {
@@ -62,7 +63,7 @@ export function Particles() {
     }, 600);
 
     function loop() {
-      ctx!.clearRect(0, 0, canvas!.width, canvas!.height);
+      ctx!.clearRect(0, 0, canvasElement.width, canvasElement.height);
 
       for (const p of particles) {
         p.y += p.vy;
@@ -72,7 +73,7 @@ export function Particles() {
         if (p.y < -20) {
           Object.assign(
             p,
-            createParticle(canvas!.width, canvas!.height, false),
+            createParticle(canvasElement.width, canvasElement.height, false),
           );
         }
 

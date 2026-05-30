@@ -104,7 +104,8 @@ export function Fireworks() {
         rocket.y += rocket.vy;
         rocket.vy += 0.12;
 
-        if (rocket.vy >= 0 || rocket.y < canvas.height * 0.35) {
+        const currentCanvas = canvasRef.current;
+        if (rocket.vy >= 0 || !currentCanvas || rocket.y < currentCanvas.height * 0.35) {
           explodeRocket(rocket);
         } else {
           ctx.beginPath();
@@ -151,6 +152,8 @@ export function Fireworks() {
       sparks = [];
       animationId = requestAnimationFrame(update);
       spawnInterval = window.setInterval(() => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
         for (let i = 0; i < 2; i += 1) {
           rockets.push(createRocket(canvas.width, canvas.height));
         }
