@@ -8,19 +8,19 @@ const PASSCODE = "0406";
 const DIGITS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "", "0", "del"] as const;
 const SESSION_KEY = "at-auth";
 
-function isAuthenticated(): boolean {
-  if (typeof window === "undefined") return false;
-  return sessionStorage.getItem(SESSION_KEY) === "1";
-}
-
 interface LoginGateProps {
   children: ReactNode;
 }
 
 export function LoginGate({ children }: LoginGateProps) {
-  const [unlocked, setUnlocked] = useState(isAuthenticated);
+  const [unlocked, setUnlocked] = useState(false);
   const [code, setCode] = useState("");
   const [error, setError] = useState(false);
+
+  useEffect(() => {
+    const storedValue = sessionStorage.getItem(SESSION_KEY);
+    setUnlocked(storedValue === "1");
+  }, []);
 
   const handleDigit = useCallback(
     (digit: string) => {
